@@ -3,6 +3,7 @@ import { CiHome, CiSearch, CiBoxList } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
+import { RxExit } from "react-icons/rx";
 
 const LabelItem = ({ icon, children }) => {
     return (
@@ -25,34 +26,35 @@ const SearchBar = () => {
     );
 };
 
-const Aside = () => {
+const Aside = ({ children }) => {
     return (
-        <aside className="flex flex-col items-center justify-center gap-4 w-1/4 h-screen bg-neutral-900 p-4">
+        <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-1/4 h-screen bg-neutral-900 p-4 z-50">
+            <div className="text-3xl font-extrabold"><LabelItem icon={null}>WikiWatch</LabelItem></div>
             <LabelItem icon={<CiHome />}>Home</LabelItem>
             <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
             <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
             <LabelItem icon={<FaGithub />}>Repository</LabelItem>
+            <SearchBar />
+            {children}
         </aside>
     );
 }
 
 
-const ButtonAside = () => {
-    
-    const [isOpen, setIsOpen] = useState(false);
-    const handleClick = () => {
-        setIsOpen(!isOpen);
-    };  
+const ButtonAside = ({ icon,accion}) => {
     return (
-        <div onClick={handleClick}  className="flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300">
-            <CiBoxList className="text-2xl" />
-            {isOpen ? <Aside /> : null}
+        <div className="flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300" onClick={accion}>
+            {icon}
         </div>
     );
 };
 
 
 function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    };  
     return (
         <header className="p-3 relative flex  justify-between items-center gap-2">
             <nav>
@@ -65,7 +67,8 @@ function Header() {
                 </ul>
             </nav>
             <div className="hidden lg:flex basis-2xl  items-center gap-4"><SearchBar /></div>
-            <div className="flex lg:hidden items-center gap-4"><ButtonAside /></div>
+            <div className="flex lg:hidden items-center gap-4" ><ButtonAside accion={handleClick} icon={<CiBoxList/>}/></div>
+            {isOpen ? <Aside> <ButtonAside accion={handleClick} icon={<RxExit/>}/> </Aside> : null}
         </header>
     );
 }
