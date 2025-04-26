@@ -1,1 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
 @import "tailwindcss";
+
+@theme{
+    --font-title: 'Montserrat', sans-serif;
+    --font-text: 'Roboto', sans-serif;
+    --font-subtitle: 'Poppins', sans-serif;
+    --font-ui: 'Open Sans', sans-serif;
+}
+
+
+/* .titulo { font-family: 'Montserrat', sans-serif; }
+.texto { font-family: 'Roboto', sans-serif; }
+.subtitulo { font-family: 'Poppins', sans-serif; }
+.ui { font-family: 'Open Sans', sans-serif; } */

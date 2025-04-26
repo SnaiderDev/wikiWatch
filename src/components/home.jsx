@@ -8,7 +8,7 @@ import { RxExit } from "react-icons/rx";
 const LabelItem = ({ icon, children }) => {
     return (
         <div className="flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300">
-            {icon}{children}
+            <div className="scale-140">{icon}</div>{children}
         </div>
     );
 };
@@ -29,7 +29,7 @@ const SearchBar = () => {
 const Aside = ({ children }) => {
     return (
         <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-1/4 h-screen bg-neutral-900 p-4 z-50">
-            <div className="text-3xl font-extrabold"><LabelItem icon={null}>WikiWatch</LabelItem></div>
+            <div className="text-3xl"><LabelItem icon={null}>WikiWatch</LabelItem></div>
             <LabelItem icon={<CiHome />}>Home</LabelItem>
             <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
             <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
@@ -43,7 +43,7 @@ const Aside = ({ children }) => {
 
 const ButtonAside = ({ icon,accion}) => {
     return (
-        <div className="flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300" onClick={accion}>
+        <div className="text-2xl flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300" onClick={accion}>
             {icon}
         </div>
     );
@@ -58,8 +58,8 @@ function Header() {
     return (
         <header className="p-3 relative flex  justify-between items-center gap-2">
             <nav>
-                <ul className="flex items-center gap-4 text-2xl">
-                    <li className="text-3xl font-bold">WikiWatch</li>
+                <ul className="flex items-center gap-4  ">
+                    <li className="text-3xl font-bold font-title">WikiWatch</li>
                     <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Home</LabelItem> </li>
                     <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem> </li>
                     <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
