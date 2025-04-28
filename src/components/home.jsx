@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiHome, CiSearch, CiBoxList } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
 import { RxExit } from "react-icons/rx";
+
+import { UseHomePintures } from "../hooks/useHomePintures";
 
 const LabelItem = ({ icon, children }) => {
     return (
@@ -28,7 +30,7 @@ const SearchBar = () => {
 
 const Aside = ({ children }) => {
     return (
-        <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-1/4 h-screen bg-neutral-900 p-4 z-50">
+        <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-2/4 h-screen bg-neutral-900 p-4 z-50">
             <div className="text-3xl"><LabelItem icon={null}>WikiWatch</LabelItem></div>
             <LabelItem icon={<CiHome />}>Home</LabelItem>
             <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
@@ -56,7 +58,7 @@ function Header() {
         setIsOpen(!isOpen);
     };  
     return (
-        <header className="p-3 relative flex  justify-between items-center gap-2">
+        <header className="p-3 sticky flex justify-between items-center gap-2 top-0 z-50 sticky">
             <nav>
                 <ul className="flex items-center gap-4  ">
                     <li className="text-3xl font-bold font-title">WikiWatch</li>
@@ -73,8 +75,46 @@ function Header() {
     );
 }
 
+//Actualizacion de las imagnes cada 5 segundos en el homre
+const HomePintures = () => {
+    const pintures = UseHomePintures();
+    const [currentIndex, setCurrentIndex] = useState(0);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % pintures.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [pintures]);
+
+    return (
+        <div className="w-full h-[600px] overflow-hidden relative">
+            <div className="w-full h-full flex items-center justify-center relative">
+                {pintures.map((pinture, index) => (
+                    <img
+                        key={index}
+                        src={pinture}
+                        alt={`Pinture ${index}`}
+                        className="absolute w-full h-full object-cover transition-opacity duration-500"
+                        style={{ opacity: index === currentIndex ? 1 : 0 }}
+                    />
+                ))}
+            </div>
+            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-neutral-900 via-transparent to-transparent"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1/2 flex flex-col gap-1 items-center justify-center text-neutral-50 font-bold text-3xl">
+                <h1 className="text-8xl">WikiWatch</h1>
+                <h2 className="text-2xl">Discover the world of movies and series</h2>
+                <FaGithub />
+            </div>
+        </div>
+    );
+};
+
+
 export default function Home() {
     return (
-        <Header />
+        <main>
+            <Header />
+            <HomePintures />
+        </main>
     );
 }
