@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # files
-src\config\apiKey.js
+src/config/apiKey.js
