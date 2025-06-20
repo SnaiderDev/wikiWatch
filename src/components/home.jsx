@@ -6,6 +6,7 @@ import { SiSteelseries } from "react-icons/si";
 import { RxExit } from "react-icons/rx";
 
 import { UseHomePintures } from "../hooks/useHomePintures";
+import { Card } from "./cards";
 
 const LabelItem = ({ icon, children }) => {
     return (
@@ -115,6 +116,7 @@ export default function Home() {
         <main>
             <Header />
             <HomePintures />
+            <Card/>
         </main>
     );
 }
