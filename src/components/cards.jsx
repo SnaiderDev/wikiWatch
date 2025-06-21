@@ -16,7 +16,7 @@ export function Card() {
                 </div>
             </div>
             <div>
-                <h2 className="text-center text-3xl font-text">Mantente informado de lo mejor del entrentenimiento!</h2>
+                <h2 className="text-center text-3xl font-text">Stay up to date with the latest in entertainment!</h2>
             </div>
         </div>
 

@@ -121,7 +121,7 @@ function Footer() {
                     </a>
                 </div>
                 <div>
-                    <h2 className="font-subtitle text-2xl">Participante</h2>
+                    <h2 className="font-subtitle text-2xl">Participant</h2>
                     <div className="flex items-center justify-center  gap-2">
                         <p className="font-text">
                             Esnader David Ortega Rodriguez
