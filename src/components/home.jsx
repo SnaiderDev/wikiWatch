@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CiHome, CiSearch, CiBoxList } from "react-icons/ci";
+import { CiHome, CiSearch, CiBoxList, CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
@@ -19,10 +19,10 @@ const LabelItem = ({ icon, children }) => {
 const SearchBar = () => {
     return (
         <div className="relative flex  items-center justify-center gap-2 w-full">
-            <input 
-                type="text" 
-                placeholder="Search..." 
-                className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10" 
+            <input
+                type="text"
+                placeholder="Search..."
+                className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10"
             />
             <CiSearch className="text-2xl absolute right-3 text-neutral-50" />
         </div>
@@ -44,7 +44,7 @@ const Aside = ({ children }) => {
 }
 
 
-const ButtonAside = ({ icon,accion}) => {
+const ButtonAside = ({ icon, accion }) => {
     return (
         <div className="text-2xl flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300" onClick={accion}>
             {icon}
@@ -57,7 +57,7 @@ function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const handleClick = () => {
         setIsOpen(!isOpen);
-    };  
+    };
     return (
         <header className="p-3 sticky flex justify-between items-center gap-2 top-0 z-50 sticky">
             <nav>
@@ -70,8 +70,8 @@ function Header() {
                 </ul>
             </nav>
             <div className="hidden lg:flex basis-2xl  items-center gap-4"><SearchBar /></div>
-            <div className="flex lg:hidden items-center gap-4" ><ButtonAside accion={handleClick} icon={<CiBoxList/>}/></div>
-            {isOpen ? <Aside> <ButtonAside accion={handleClick} icon={<RxExit/>}/> </Aside> : null}
+            <div className="flex lg:hidden items-center gap-4" ><ButtonAside accion={handleClick} icon={<CiBoxList />} /></div>
+            {isOpen ? <Aside> <ButtonAside accion={handleClick} icon={<RxExit />} /> </Aside> : null}
         </header>
     );
 }
@@ -110,13 +110,47 @@ const HomePintures = () => {
     );
 };
 
+function Footer() {
+    return (
+        <footer>
+            <div className="flex flex-wrap items-center justify-center gap-4 p-4">
+                <div className="basis-52 h-52 text-center">
+                    <a href="">
+                        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt=""
+                            className="h-full w-full" />
+                    </a>
+                </div>
+                <div>
+                    <h2 className="font-subtitle text-2xl">Participante</h2>
+                    <div className="flex items-center justify-center  gap-2">
+                        <p className="font-text">
+                            Esnader David Ortega Rodriguez
+                        </p>
+
+                        <div className="flex items-center justify-center gap-4 ">
+                            <a href="">
+                                <CiLinkedin className="text-3xl cursor-pointer hover:text-neutral-400 transition-colors duration-300" />
+                            </a>
+                            <a href="">
+                                <FaGithub className="text-3xl cursor-pointer hover:text-neutral-400 transition-colors duration-300" />
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    );
+}
+
 
 export default function Home() {
     return (
         <main>
             <Header />
             <HomePintures />
-            <Card/>
+            <Card />
+            <Footer />
         </main>
     );
 }
