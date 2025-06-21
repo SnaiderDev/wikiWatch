@@ -101,10 +101,10 @@ const HomePintures = () => {
                 ))}
             </div>
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-neutral-900 via-transparent to-transparent"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1/2 flex flex-col gap-1 items-center justify-center text-neutral-50 font-bold text-3xl">
-                <h1 className="text-8xl">WikiWatch</h1>
-                <h2 className="text-2xl">Discover the world of movies and series</h2>
-                <FaGithub />
+            <div className="absolute bottom-0 left-0 w-full h-1/2 flex flex-col gap-1 items-center justify-center text-neutral-50 font-bold">
+                <h1 className="font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">WikiWatch</h1>
+                <h2 className="text-lg sm:text-xl text-center md:text-2xl lg:text-3xl xl:text-4xl">Discover the world of movies and series</h2>
+                <h3 className="text-base sm:text-lg text-center md:text-xl lg:text-2xl xl:text-3xl">We always think of what's best for you</h3>
             </div>
         </div>
     );
