@@ -59,7 +59,7 @@ function Header() {
         setIsOpen(!isOpen);
     };
     return (
-        <header className="p-3 sticky flex justify-between items-center gap-2 top-0 z-50 sticky">
+        <header className="p-3 flex justify-between items-center gap-2 top-0 z-50 sticky bg-neutral-900">
             <nav>
                 <ul className="flex items-center gap-4  ">
                     <li className="text-3xl font-bold font-title">WikiWatch</li>
