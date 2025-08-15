@@ -25,3 +25,27 @@ export function Card() {
 
     );
 }
+
+// function fot card pintures home
+export function CardSeccion({ content, title }) {
+    const Card = ({ image, text }) => (
+        <div className="flex relative basis-sm h-64 rounded-xl shadow-lg cursor-pointer">
+            <img src={image} alt="Card" className="w-full h-full object-cover rounded-xl opacity-85" />
+            <div className="absolute bottom-0 w-full p-2 bg-black text-center rounded-b-xl">
+                {text}
+            </div>
+        </div>
+    )
+    return (
+        <main className="flex flex-col gap-1.5 mt-10">
+            {title && <h2 className="text-3xl font-text text-center">{title}</h2>}
+            <div className="flex justify-center items-center gap-4  p-4 flex-wrap">
+                {
+                    content.map((pinture,index) => (
+                        <Card key={index} image={pinture.image} text={pinture.name} />
+                    ))
+                }
+            </div>
+        </main>
+    )
+}

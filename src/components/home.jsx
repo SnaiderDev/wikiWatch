@@ -5,8 +5,8 @@ import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
 import { RxExit } from "react-icons/rx";
 
-import { UseHomePintures } from "../hooks/useHomePintures";
-import { Card } from "./cards";
+import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPinturesCardHome } from "../hooks/useHomePintures";
+import { Card, CardSeccion } from "./cards";
 
 const LabelItem = ({ icon, children }) => {
     return (
@@ -143,6 +143,22 @@ function Footer() {
     );
 }
 
+const MoviesCardSection = () => {
+    const ratedPintures = UseRatedMoviesPinturesCardHome();
+    const title = "Top Rated Movies";
+    return (
+        <CardSeccion content={ratedPintures} title={title} />
+    )
+}
+
+const SeriesCardSection = () => {
+    const ratedSeries = UseRatedSeriesPinturesCardHome();
+    const title = "Top Rated Series";
+    return (
+        <CardSeccion content={ratedSeries} title={title} />
+    )
+}
+
 
 export default function Home() {
     return (
@@ -150,6 +166,8 @@ export default function Home() {
             <Header />
             <HomePintures />
             <Card />
+            <MoviesCardSection />
+            <SeriesCardSection />
             <Footer />
         </main>
     );

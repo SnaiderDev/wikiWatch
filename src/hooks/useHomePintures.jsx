@@ -58,9 +58,12 @@ export function UseRatedMoviesPinturesCardHome(){
                 const data = await res.json();
                 const rated_paths = data.results
                     .filter((movie) => movie.poster_path) // Filter out null paths
-                    .slice(0, 6) // Take only the first 3
-                    .map((movie) => `https://image.tmdb.org/t/p/original${movie.poster_path}`);
-                console.log(rated_paths);
+                    .slice(0, 6) // Take only the first 6
+                    .map((movie) => ({
+                        image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+                        name: movie.original_name || movie.original_title,
+                    }));
+//                console.log(rated_paths);
                 setRatedPintures(rated_paths);
             } catch (error) {
                 console.error("Error fetching rated movie data:", error);
@@ -83,8 +86,12 @@ export function UseRatedSeriesPinturesCardHome(){
                 const rated_series_paths = data.results
                     .filter((series) => series.poster_path) // Filter out null paths
                     .slice(0, 6) // Take only the first 6
-                    .map((series) => `https://image.tmdb.org/t/p/original${series.poster_path}`)
-                console.log(rated_series_paths)
+                    .map((series) => ({
+                        image: `https://image.tmdb.org/t/p/original${series.poster_path}`,
+                        name: series.original_name,
+                    }));
+//
+           //     console.log(rated_series_paths)
                 setRatedSeries(rated_series_paths)
             } catch (error) {
                 console.error("Error fetching rated series data:", error);
