@@ -145,7 +145,7 @@ function Footer() {
 
 const MoviesCardSection = () => {
     const ratedPintures = UseRatedMoviesPinturesCardHome();
-    const title = "Top Rated Movies";
+    const title = "Discover all the best in the world of cinema";
     return (
         <CardSeccion content={ratedPintures} title={title} />
     )
@@ -153,7 +153,7 @@ const MoviesCardSection = () => {
 
 const SeriesCardSection = () => {
     const ratedSeries = UseRatedSeriesPinturesCardHome();
-    const title = "Top Rated Series";
+    const title = "Don't miss any of your favorite series";
     return (
         <CardSeccion content={ratedSeries} title={title} />
     )

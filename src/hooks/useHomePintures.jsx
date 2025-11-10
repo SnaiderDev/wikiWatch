@@ -61,7 +61,7 @@ export function UseRatedMoviesPinturesCardHome(){
                     .slice(0, 6) // Take only the first 6
                     .map((movie) => ({
                         image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
-                        name: movie.original_name || movie.original_title,
+                        name: movie.title,
                     }));
 //                console.log(rated_paths);
                 setRatedPintures(rated_paths);
@@ -88,7 +88,7 @@ export function UseRatedSeriesPinturesCardHome(){
                     .slice(0, 6) // Take only the first 6
                     .map((series) => ({
                         image: `https://image.tmdb.org/t/p/original${series.poster_path}`,
-                        name: series.original_name,
+                        name: series.name,
                     }));
 //
            //     console.log(rated_series_paths)
