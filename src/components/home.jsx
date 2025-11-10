@@ -158,7 +158,64 @@ const SeriesCardSection = () => {
         <CardSeccion content={ratedSeries} title={title} />
     )
 }
+const HomeSectionContext = () => {
+    return (
+        <section className="px-4 py-12">
+            <div className="mx-auto max-w-6xl w-full flex flex-col lg:flex-row gap-8 items-start">
+                <div className="bg-neutral-900/60 p-6 rounded-xl shadow-lg border border-neutral-800 backdrop-blur-sm flex-1">
+                    <header className="mb-4">
+                        <h1 className="font-title font-bold text-2xl sm:text-3xl md:text-4xl">WikiWatch</h1>
+                        <p className="mt-2 text-neutral-300 leading-relaxed">
+                            Plataforma colaborativa dedicada a proporcionar información detallada y actualizada
+                            sobre películas, series, documentales y otro contenido audiovisual.
+                        </p>
+                    </header>
 
+                    <article>
+                        <h2 className="font-semibold text-lg sm:text-xl md:text-2xl">Propósito</h2>
+                        <p className="mt-2 text-neutral-300">
+                            Nuestro propósito es crear un espacio donde los amantes del entretenimiento puedan:
+                        </p>
+
+                        <ul className="mt-4 flex flex-col gap-3 sm:gap-2 list-none">
+                            <li className="flex items-start gap-3">
+                                <span className="flex-none w-8 h-8 rounded-full bg-emerald-500 text-black font-bold grid place-items-center">1</span>
+                                <div>
+                                    <strong className="block">Explorar</strong>
+                                    <p className="text-sm text-neutral-300">Acceder a información completa sobre sus producciones favoritas.</p>
+                                </div>
+                            </li>
+
+                            <li className="flex items-start gap-3">
+                                <span className="flex-none w-8 h-8 rounded-full bg-sky-500 text-black font-bold grid place-items-center">2</span>
+                                <div>
+                                    <strong className="block">Descubrir</strong>
+                                    <p className="text-sm text-neutral-300">Encontrar nuevos títulos basados en sus intereses y valoraciones.</p>
+                                </div>
+                            </li>
+
+                            <li className="flex items-start gap-3">
+                                <span className="flex-none w-8 h-8 rounded-full bg-amber-400 text-black font-bold grid place-items-center">3</span>
+                                <div>
+                                    <strong className="block">Contribuir</strong>
+                                    <p className="text-sm text-neutral-300">Compartir conocimientos y recomendaciones con la comunidad.</p>
+                                </div>
+                            </li>
+
+                            <li className="flex items-start gap-3">
+                                <span className="flex-none w-8 h-8 rounded-full bg-violet-500 text-black font-bold grid place-items-center">4</span>
+                                <div>
+                                    <strong className="block">Conectar</strong>
+                                    <p className="text-sm text-neutral-300">Intercambiar opiniones y descubrir nuevas perspectivas.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    );
+}
 
 export default function Home() {
     return (
@@ -168,6 +225,7 @@ export default function Home() {
             <Card />
             <MoviesCardSection />
             <SeriesCardSection />
+            <HomeSectionContext />
             <Footer />
         </main>
     );
