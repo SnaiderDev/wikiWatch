@@ -4,9 +4,9 @@ import { FaGithub } from "react-icons/fa";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
 import { RxExit } from "react-icons/rx";
-
 import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPinturesCardHome } from "../hooks/useHomePintures";
 import { Card, CardSeccion } from "./cards";
+import { UseMediaSearch } from "../hooks/useContentSearch";
 
 const LabelItem = ({ icon, children }) => {
     return (
@@ -16,15 +16,42 @@ const LabelItem = ({ icon, children }) => {
     );
 };
 
+const SearchItems =  ({content}) => {
+    const mediaSearch = UseMediaSearch(content);
+    return (
+        <div className="absolute top-16 left-0 w-full bg-neutral-800/90 backdrop-blur-sm p-4 z-50 max-h-96 overflow-y-auto">
+            {mediaSearch.length === 0 ? (
+                <p className="text-neutral-300">No results found</p>
+            ) : (
+                <ul className="flex flex-col gap-2">
+                    {mediaSearch.map((item) => (
+                        <li key={item.id} className="p-2 bg-neutral-700 rounded-md hover:bg-neutral-600 transition-colors duration-300">
+                            {item.title || item.name}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+        
+    );
+}
 const SearchBar = () => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const handleInput = (e) => {
+        setSearchTerm(e.target.value);
+    };;
+  
     return (
         <div className="relative flex  items-center justify-center gap-2 w-full">
             <input
                 type="text"
                 placeholder="Search..."
                 className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10"
+                value={searchTerm}
+                onChange={handleInput}
             />
             <CiSearch className="text-2xl absolute right-3 text-neutral-50" />
+            {searchTerm && <SearchItems content={searchTerm} />}
         </div>
     );
 };
