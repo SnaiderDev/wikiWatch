@@ -16,23 +16,43 @@ const LabelItem = ({ icon, children }) => {
     );
 };
 
-const SearchItems =  ({content}) => {
+const SearchItems = ({ content }) => {
     const mediaSearch = UseMediaSearch(content);
     return (
-        <div className="absolute top-16 left-0 w-full bg-neutral-800/90 backdrop-blur-sm p-4 z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-16 left-0 w-full bg-neutral-800/90 backdrop-blur-sm p-2 z-50 max-h-96 overflow-y-auto">
             {mediaSearch.length === 0 ? (
-                <p className="text-neutral-300">No results found</p>
+                <p className="text-neutral-300 text-sm px-2">No results found</p>
             ) : (
                 <ul className="flex flex-col gap-2">
                     {mediaSearch.map((item) => (
-                        <li key={item.id} className="p-2 bg-neutral-700 rounded-md hover:bg-neutral-600 transition-colors duration-300">
-                            {item.title || item.name}
+                        <li
+                            key={item.id}
+                            className="flex items-center gap-3 p-1.5 bg-neutral-700 rounded-md hover:bg-neutral-600 transition-colors duration-300"
+                        >
+                            {item.path ? (
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w200${item.path}`}
+                                    alt={item.title || item.name}
+                                    className="w-26 h-30 rounded-md object-cover flex-none"
+                                />
+                            ) : (
+                                <div className="w-12 h-16 bg-neutral-600 rounded-md flex-none" />
+                            )}
+                            <div className="flex-1 min-w-0">
+                                <div className="text-sm font-medium text-neutral-50 truncate">
+                                    {item.title || item.name}
+                                </div>
+                                {item.release_date || item.first_air_date ? (
+                                    <div className="text-xs text-neutral-400 truncate">
+                                        {item.release_date || item.first_air_date}
+                                    </div>
+                                ) : null}
+                            </div>
                         </li>
                     ))}
                 </ul>
             )}
         </div>
-        
     );
 }
 const SearchBar = () => {

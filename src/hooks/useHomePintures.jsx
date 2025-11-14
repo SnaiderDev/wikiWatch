@@ -90,8 +90,6 @@ export function UseRatedSeriesPinturesCardHome(){
                         image: `https://image.tmdb.org/t/p/original${series.poster_path}`,
                         name: series.name,
                     }));
-//
-           //     console.log(rated_series_paths)
                 setRatedSeries(rated_series_paths)
             } catch (error) {
                 console.error("Error fetching rated series data:", error);

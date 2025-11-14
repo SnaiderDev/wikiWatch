@@ -7,7 +7,7 @@ export function UseMovieSearch(content) {
             try {
                 const movies = await fetch(`https://api.themoviedb.org/3/search/movie?query=${content}&include_adult=false&language=en-US&page=1&api_key=${apikey}`);
                 const data = await movies.json();
-                const date_names = data.results.map((movie) => ({ id: movie.id, title: movie.title }));
+                const date_names = data.results.map((movie) => ({ id: movie.id, title: movie.title, path: movie.poster_path }));
                 setSearchPintures(date_names);
             } catch (error) {
                 console.error("Error fetching search data:", error);
@@ -26,7 +26,7 @@ export function UseSeriesSearch(content) {
             try {
                 const series = await fetch(`https://api.themoviedb.org/3/search/tv?query=${content}&include_adult=false&language=en-US&page=1&api_key=${apikey}`);
                 const data = await series.json();
-                const date_names = data.results.map((tv) => ({ id: tv.id, name: tv.name }));
+                const date_names = data.results.map((tv) => ({ id: tv.id, name: tv.name , path: tv.poster_path }));
                 setSearchPintures(date_names);
             } catch (error) {
                 console.error("Error fetching search data:", error);
@@ -39,8 +39,8 @@ export function UseSeriesSearch(content) {
 }
 
 export function UseMediaSearch(content) {
-    const findMovies = UseMovieSearch(content).slice(0, 5);
-    const findSeries = UseSeriesSearch(content).slice(0, 5);
+    const findMovies = UseMovieSearch(content).slice(0, 2);
+    const findSeries = UseSeriesSearch(content).slice(0, 2);
     const combinedResults = [...findMovies, ...findSeries];
 
     return combinedResults;
