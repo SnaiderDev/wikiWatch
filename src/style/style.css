@@ -14,9 +14,12 @@
     /* Colors */
     --color-primary: #1EC6D9;
     --color-primary-hover: #18a9b8;
+
     --color-background: #0B0B0A;
     --color-surface: #141414;
+
     --color-text: #FAFAFA;
     --color-text-muted: #A1A1AA;
+
     --color-border: #262626;
 }

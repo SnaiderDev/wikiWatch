@@ -35,7 +35,7 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="relative flex  items-center justify-center gap-2 w-full">
+        <div className="group  relative flex  items-center justify-center gap-2 w-full">
             <input
                 type="text"
                 placeholder="Search..."
@@ -43,7 +43,7 @@ const SearchBar = () => {
                 value={searchTerm}
                 onChange={handleInput}
             />
-            <CiSearch className="text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
+            <CiSearch className="group-active:scale-100 transition-all duration-300  text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
             {searchTerm && <SearchItems content={searchTerm} />}
         </div>
     );
