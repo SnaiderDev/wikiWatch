@@ -39,8 +39,8 @@ export function UseSeriesSearch(content) {
 }
 
 export function UseMediaSearch(content) {
-    const findMovies = UseMovieSearch(content).slice(0, 2);
-    const findSeries = UseSeriesSearch(content).slice(0, 2);
+    const findMovies = UseMovieSearch(content).slice(0, 3);
+    const findSeries = UseSeriesSearch(content).slice(0, 3);
     const combinedResults = [...findMovies, ...findSeries];
 
     return combinedResults;

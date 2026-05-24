@@ -1,10 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&family=Poppins:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
 @import "tailwindcss";
-@theme{
+
+/* Theme */
+@theme {
+    /* Typography */
     --font-title: 'Montserrat', sans-serif;
-    --font-text: 'Roboto', sans-serif;
     --font-subtitle: 'Poppins', sans-serif;
+    --font-text: 'Roboto', sans-serif;
     --font-ui: 'Open Sans', sans-serif;
+
+    /* Colors */
+    --color-primary: #1EC6D9;
+    --color-primary-hover: #18a9b8;
+    --color-background: #0B0B0A;
+    --color-surface: #141414;
+    --color-text: #FAFAFA;
+    --color-text-muted: #A1A1AA;
+    --color-border: #262626;
 }
-
-

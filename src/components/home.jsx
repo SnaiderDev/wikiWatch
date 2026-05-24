@@ -7,51 +7,49 @@ import { RxExit } from "react-icons/rx";
 import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPinturesCardHome } from "../hooks/useHomePintures";
 import { Card, CardSeccion } from "./cards";
 import { UseMediaSearch } from "../hooks/useContentSearch";
-
 const LabelItem = ({ icon, children }) => {
     return (
-        <div className="flex items-center justify-center gap-2 cursor-pointer text-neutral-50 hover:text-neutral-400 transition-colors duration-300">
-            <div className="scale-140">{icon}</div>{children}
+        <div
+            className="
+                group
+                flex items-center gap-3
+                px-3 py-2
+                rounded-xl
+                cursor-pointer
+                transition-all duration-300
+                text-[var(--color-text)]
+                hover:text-[var(--color-primary)]
+                hover:bg-[var(--color-surface)]
+                hover:scale-105
+            "
+        >
+            <span
+                className="
+                    text-[var(--color-primary)]
+                    transform: scale-200
+                    transition-transform duration-300
+                    group-hover:rotate-20
+                "
+            >
+                {icon}
+            </span>
+
+            <span className="font-ui font-medium tracking-wide text-xl">
+                {children}
+            </span>
         </div>
     );
 };
-
 const SearchItems = ({ content }) => {
     const mediaSearch = UseMediaSearch(content);
     return (
-        <div className="absolute top-16 left-0 w-full bg-neutral-800/90 backdrop-blur-sm p-2 z-50 max-h-96 overflow-y-auto">
-            {mediaSearch.length === 0 ? (
-                <p className="text-neutral-300 text-sm px-2">No results found</p>
-            ) : (
-                <ul className="flex flex-col gap-2">
-                    {mediaSearch.map((item) => (
-                        <li
-                            key={item.id}
-                            className="flex items-center gap-3 p-1.5 bg-neutral-700 rounded-md hover:bg-neutral-600 transition-colors duration-300"
-                        >
-                            {item.path ? (
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w200${item.path}`}
-                                    alt={item.title || item.name}
-                                    className="w-26 h-30 rounded-md object-cover flex-none"
-                                />
-                            ) : (
-                                <div className="w-12 h-16 bg-neutral-600 rounded-md flex-none" />
-                            )}
-                            <div className="flex-1 min-w-0">
-                                <div className="text-sm font-medium text-neutral-50 truncate">
-                                    {item.title || item.name}
-                                </div>
-                                {item.release_date || item.first_air_date ? (
-                                    <div className="text-xs text-neutral-400 truncate">
-                                        {item.release_date || item.first_air_date}
-                                    </div>
-                                ) : null}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className="absolute top-16">
+            {mediaSearch.length > 0 ? 
+            <div className="w-3 bg-amber-300">
+                yes
+            </div>
+              : 
+            <div>No results found</div>}
         </div>
     );
 }
@@ -59,7 +57,7 @@ const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const handleInput = (e) => {
         setSearchTerm(e.target.value);
-    };;
+    };
   
     return (
         <div className="relative flex  items-center justify-center gap-2 w-full">
