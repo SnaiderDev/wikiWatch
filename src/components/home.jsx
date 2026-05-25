@@ -3,6 +3,8 @@ import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPintures
 import { Card, CardSeccion } from "./cards";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { ContentSection } from "./Items";
+
 
 
 
@@ -49,9 +51,10 @@ const HomePintures = () => {
 
 const MoviesCardSection = () => {
     const ratedPintures = UseRatedMoviesPinturesCardHome();
-    const title = "Discover all the best in the world of cinema";
     return (
-        <CardSeccion content={ratedPintures} title={title} />
+        <ContentSection title={"Discover all the best in the world of cinema"}>
+            <CardSeccion content={ratedPintures}/>
+        </ContentSection>
     )
 }
 
@@ -68,7 +71,7 @@ export default function Home() {
     return (
         <main>
             <Header />
-            <HomePintures />
+            <HomePintures/>
             <Card />
             <MoviesCardSection />
             <SeriesCardSection />
