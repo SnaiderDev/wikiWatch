@@ -52,17 +52,34 @@ const HomePintures = () => {
 const MoviesCardSection = () => {
     const ratedPintures = UseRatedMoviesPinturesCardHome();
     return (
-        <ContentSection title={"Discover all the best in the world of cinema"}>
+        
+         <article>
+            <header>
+             <div className="font-bold text-center text-3xl font-subtitle">
+                Discover <span className="text-[var(--color-primary)] font-bold">all</span>
+                <span> </span>the best in the<span className="text-[var(--color-primary)] font-bold">world </span>
+                <span> </span>of cinema <span className="text-[var(--color-primary)] font-bold">!</span>
+             </div>
+            </header>
             <CardSeccion content={ratedPintures}/>
-        </ContentSection>
+        </article>
     )
 }
 
 const SeriesCardSection = () => {
     const ratedSeries = UseRatedSeriesPinturesCardHome();
-    const title = "Don't miss any of your favorite series";
     return (
-        <CardSeccion content={ratedSeries} title={title} />
+        <article>
+            <header>
+             <div className="font-bold text-center text-3xl font-subtitle">
+                Don't miss <span className="text-[var(--color-primary)] font-bold">any</span>
+                <span> </span>of your <span className="text-[var(--color-primary)] font-bold">favorite</span>
+                <span> </span>series <span className="text-[var(--color-primary)] font-bold">!</span>
+             </div>
+            </header>
+            <CardSeccion content={ratedSeries} />
+        </article>
+        
     )
 }
 
