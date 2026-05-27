@@ -2,9 +2,9 @@ import { useState } from "react";
 import { CiHome, CiBoxList,CiSearch } from "react-icons/ci";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLanguage } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
-import { LabelItem } from "./Items";
+import { Icon, LabelItem } from "./Items";
 import { UseMediaSearch } from "../hooks/useContentSearch";
 
 const ButtonAside = ({ icon, accion }) => {
@@ -68,6 +68,26 @@ const Aside = ({ children }) => {
     );
 }
 
+const LanguageSelector = () => {
+    const [language, setLanguage] = useState("en");
+    const handleSetLanguage = (e) => {
+        setLanguage(e.target.value);
+    };
+    return (
+        <div className="flex items-center gap-2">
+            <Icon><FaLanguage/></Icon>
+            <select
+                className="box-list bg-neutral-800 text-neutral-50 p-2 rounded-md"
+                value={language}
+                onChange={handleSetLanguage}
+            >
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+    );
+}
+
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +108,7 @@ export function Header() {
                 </ul>
             </nav>
             <div className="hidden lg:flex basis-2xl  items-center gap-4"><SearchBar /></div>
+            <LanguageSelector />
             <div className="flex lg:hidden items-center gap-4" ><ButtonAside accion={handleClick} icon={<CiBoxList />} /></div>
             {isOpen ? <Aside> <ButtonAside accion={handleClick} icon={<RxExit />} /> </Aside> : null}
         </header>
