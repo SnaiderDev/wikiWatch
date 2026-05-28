@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CiHome, CiBoxList,CiSearch } from "react-icons/ci";
+import { CiHome, CiBoxList, CiSearch } from "react-icons/ci";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
 import { FaGithub, FaLanguage } from "react-icons/fa";
@@ -75,14 +75,18 @@ const LanguageSelector = () => {
     };
     return (
         <div className="flex items-center gap-2">
-            <Icon><FaLanguage/></Icon>
+            <Icon><FaLanguage /></Icon>
             <select
-                className="box-list bg-neutral-800 text-neutral-50 p-2 rounded-md"
+                className="box-list bg-neutral-800 text-neutral-50 p-2 rounded-md 
+                focus:outline-none hover:bg-neutral-700 transition-colors duration-300 
+                cursor-pointer 
+                "
                 value={language}
                 onChange={handleSetLanguage}
             >
                 <option value="es">ES</option>
                 <option value="en">EN</option>
+
             </select>
         </div>
     );
