@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useContext, useState } from "react";
 import { CiHome, CiBoxList, CiSearch } from "react-icons/ci";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
@@ -6,6 +6,7 @@ import { FaGithub, FaLanguage } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 import { Icon, LabelItem } from "./Items";
 import { UseMediaSearch } from "../hooks/useContentSearch";
+import { LanguageContext } from "../context/ContextLanguage";
 
 const ButtonAside = ({ icon, accion }) => {
     return (
@@ -69,7 +70,8 @@ const Aside = ({ children }) => {
 }
 
 const LanguageSelector = () => {
-    const [language, setLanguage] = useState("en");
+    console.log(LanguageContext);
+    const [language, setLanguage] =  useContext();
     const handleSetLanguage = (e) => {
         setLanguage(e.target.value);
     };

@@ -1,11 +1,15 @@
-import  Home  from "./components/home"
+import Home from "./components/home"
+import { LanguageProvider } from "./context/ContextLanguage"
+
 
 function App() {
 
   return (
-    <main className="h-min-screen relative  bg-neutral-950 text-neutral-50 font-iu">
-      <Home />
-    </main>
+    <LanguageProvider>
+      <main className="h-min-screen relative  bg-neutral-950 text-neutral-50 font-iu">
+        <Home />
+      </main>
+    </LanguageProvider>
   )
 }
 
