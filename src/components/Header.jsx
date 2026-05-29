@@ -31,6 +31,7 @@ const SearchItems = ({ content }) => {
 }
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const { language } = useContext(LanguageContext);
     const handleInput = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -39,7 +40,7 @@ const SearchBar = () => {
         <div className="group  relative flex  items-center justify-center gap-2 w-full">
             <input
                 type="text"
-                placeholder="Search..."
+                placeholder={language === "en" ? "Search..." : "Buscar..."}
                 className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10"
                 value={searchTerm}
                 onChange={handleInput}
@@ -51,23 +52,6 @@ const SearchBar = () => {
 };
 
 
-const Aside = ({ children }) => {
-    return (
-        <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-2/4 h-screen bg-neutral-900 p-4 z-50">
-            <div className="text-3xl"><LabelItem icon={null}>
-                <div>
-                    WikiWatch
-                </div>
-            </LabelItem></div>
-            <LabelItem icon={<CiHome />}>Home</LabelItem>
-            <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
-            <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
-            <LabelItem icon={<FaGithub />}>Repository</LabelItem>
-            <SearchBar />
-            {children}
-        </aside>
-    );
-}
 
 const LanguageSelector = () => {
     const { language, setLanguage } = useContext(LanguageContext);
@@ -95,8 +79,49 @@ const LanguageSelector = () => {
 }
 
 
+const Aside = ({ children }) => {
+    const { language } = useContext(LanguageContext);
+    return (
+        <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-2/4 h-screen bg-neutral-900 p-4 z-50">
+            {language === "en" ?
+                <>  
+                    <div className="text-3xl"><LabelItem icon={null}>
+                
+                <div>
+                    WikiWatch
+                </div>
+            
+            </LabelItem></div>
+            <LabelItem icon={<CiHome />}>Home</LabelItem>
+            <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
+            <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
+            <LabelItem icon={<FaGithub />}>Repository</LabelItem>
+            <SearchBar />
+            <LanguageSelector/>
+                </> : <> 
+                    <div className="text-3xl"><LabelItem icon={null}>
+                
+                <div>
+                    WikiWatch
+                </div>
+            
+            </LabelItem></div>
+            <LabelItem icon={<CiHome />}>Inicio</LabelItem>
+            <LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem>
+            <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
+            <LabelItem icon={<FaGithub />}>Repositorio</LabelItem>
+            <SearchBar />
+            <LanguageSelector/>
+                </>}
+            
+            {children}
+        </aside>
+    );
+}
+
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const { language } = useContext(LanguageContext);
     const handleClick = () => {
         setIsOpen(!isOpen);
     };
@@ -104,13 +129,25 @@ export function Header() {
         <header className="p-3 flex justify-between items-center gap-2 top-0 z-50 sticky bg-neutral-900 opacity-70">
             <nav>
                 <ul className="flex items-center gap-4  ">
-                    <li className="text-3xl font-bold font-title">
-                        Wiki<span className="text-[var(--color-primary)]">Watch</span>
-                    </li>
-                    <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Home</LabelItem> </li>
-                    <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem> </li>
-                    <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
-                    <li className="hidden lg:block"> <LabelItem icon={<FaGithub />}>Repository</LabelItem> </li>
+                    {language === "en" ?
+                        <>
+                            <li className="text-3xl font-bold font-title">
+                                Wiki<span className="text-[var(--color-primary)]">Watch</span>
+                            </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Home</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<FaGithub />}>Repository</LabelItem> </li>
+                        </> :
+                        <>
+                            <li className="text-3xl font-bold font-title">
+                                Wiki<span className="text-[var(--color-primary)]">Watch</span>
+                            </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Inicio</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
+                            <li className="hidden lg:block"> <LabelItem icon={<FaGithub />}>Repositorio</LabelItem> </li>
+                        </>}
                 </ul>
             </nav>
             <div className="hidden lg:flex basis-2xl  items-center gap-4"><SearchBar /></div>

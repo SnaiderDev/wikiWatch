@@ -3,6 +3,7 @@ import Home from "./components/home"
 import { LanguageProvider } from "./context/ContextLanguage"
 import { FaCircleArrowUp } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { Footer } from "./components/Footer";
 
 const TopButton = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -36,7 +37,7 @@ function App() {
       <main className="h-min-screen relative  bg-neutral-950 text-neutral-50 font-iu">
         <Header />
         <Home />
-        <footer/>
+        <Footer/>
         <TopButton/>
       </main>
     </LanguageProvider>

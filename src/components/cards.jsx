@@ -1,11 +1,17 @@
 import { UseCardPinturesHome } from "../hooks/useHomePintures";
-
+import { useContext } from "react";
+import { LanguageContext } from "../context/ContextLanguage";
 export function Card() {
     const cardPintures = UseCardPinturesHome()
+    const { language } = useContext(LanguageContext);
     return (
         <div className="mt-14 flex flex-col  justify-center gap-4 mt-10">
             <div>
-                <h2 className="text-center text-4xl font-subtitle ">Stay up to date with the latest in entertainment!</h2>
+                {language === "en" ? (
+                    <h2 className="text-center text-4xl font-subtitle ">Stay up to date with <span className="text-[var(--color-primary)]">the latest</span> in entertainment <span className="text-[var(--color-primary)]">!</span></h2>
+                ) : (
+                    <h2 className="text-center text-4xl font-subtitle ">Mantente al día con <span className="text-[var(--color-primary)]">lo último</span> en entretenimiento <span className="text-[var(--color-primary)]">!</span></h2>
+                )}
             </div>
             <div className="flex flex-wrap justify-center  gap-4">
                 <div className="bg-[var(--color-primary)] basis-xs h-1/3 rounded-xl shadow-lg">
