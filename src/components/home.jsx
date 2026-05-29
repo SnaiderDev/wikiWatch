@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPinturesCardHome } from "../hooks/useHomePintures";
 import { Card, CardSeccion } from "./cards";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
 import { ContentSection, Icon } from "./Items";
 import { FaCircleArrowUp } from "react-icons/fa6";
 
@@ -79,41 +77,13 @@ const SeriesCardSection = () => {
     )
 }
 
-const TopButton = () => {
-    const [isVisible, setIsVisible] = useState(false)
-    const handleScrool = () => {
-        window.scrollTo({top:0,behavior:"smooth"})
-    }
-    useEffect(() => {
-            window.addEventListener("scroll",() => {
-                window.scrollY > 300 ? setIsVisible(true) : setIsVisible(false)
-            }  );
-
-            return window.removeEventListener("scroll",null )
-    },[])
-
-    if (!isVisible) return null
-    return (
-        <button onClick={handleScrool} 
-        className="fixed bottom-20 right-4 bg-[var(--color-primary)]  p-2 rounded-full shadow-lg 
-        hover:bg-[var(--color-primary-dark)] cursor-pointer">
-            <FaCircleArrowUp className = "text-4xl  transition-transform duration-300 hover:scale-200 hover:rotate-6"/>
-        </button>
-    )
-}
-
-
-
 export default function Home() {
     return (
         <main>
-            <Header />
             <HomePintures/>
             <Card />
             <MoviesCardSection />
             <SeriesCardSection />
-            <TopButton />
-            <Footer />
         </main>
     );
 }

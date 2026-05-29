@@ -1,4 +1,4 @@
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { CiHome, CiBoxList, CiSearch } from "react-icons/ci";
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { SiSteelseries } from "react-icons/si";
@@ -70,11 +70,11 @@ const Aside = ({ children }) => {
 }
 
 const LanguageSelector = () => {
-    console.log(LanguageContext);
-    const [language, setLanguage] =  useContext();
+    const { language, setLanguage } = useContext(LanguageContext);
     const handleSetLanguage = (e) => {
         setLanguage(e.target.value);
     };
+
     return (
         <div className="flex items-center gap-2">
             <Icon><FaLanguage /></Icon>
