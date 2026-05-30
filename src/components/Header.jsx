@@ -7,6 +7,7 @@ import { RxExit } from "react-icons/rx";
 import { Icon, LabelItem } from "./Items";
 import { UseMediaSearch } from "../hooks/useContentSearch";
 import { LanguageContext } from "../context/ContextLanguage";
+import { Link } from "react-router-dom";
 
 const ButtonAside = ({ icon, accion }) => {
     return (
@@ -92,10 +93,10 @@ const Aside = ({ children }) => {
                 </div>
             
             </LabelItem></div>
-            <LabelItem icon={<CiHome />}>Home</LabelItem>
-            <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem>
-            <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
-            <LabelItem icon={<FaGithub />}>Repository</LabelItem>
+            <Link to="/"><LabelItem icon={<CiHome />}>Home</LabelItem></Link>
+            <Link to="/movies"><LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem></Link>
+            <Link to="/series"><LabelItem icon={<SiSteelseries />}>Series</LabelItem></Link>
+            <a href="https://github.com/SnaiderDev/wikiWatch" target="_blank" rel="noopener noreferrer"><LabelItem icon={<FaGithub />}>Repository</LabelItem></a>
             <SearchBar />
             <LanguageSelector/>
                 </> : <> 
@@ -106,10 +107,10 @@ const Aside = ({ children }) => {
                 </div>
             
             </LabelItem></div>
-            <LabelItem icon={<CiHome />}>Inicio</LabelItem>
-            <LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem>
-            <LabelItem icon={<SiSteelseries />}>Series</LabelItem>
-            <LabelItem icon={<FaGithub />}>Repositorio</LabelItem>
+            <Link to="/"><LabelItem icon={<CiHome />}>Inicio</LabelItem></Link>
+            <Link to="/movies"><LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem></Link>
+            <Link to="/series"><LabelItem icon={<SiSteelseries />}>Series</LabelItem></Link>
+            <a href="https://github.com/SnaiderDev/wikiWatch" target="_blank" rel="noopener noreferrer"><LabelItem icon={<FaGithub />}>Repositorio</LabelItem></a>
             <SearchBar />
             <LanguageSelector/>
                 </>}
@@ -134,19 +135,19 @@ export function Header() {
                             <li className="text-3xl font-bold font-title">
                                 Wiki<span className="text-[var(--color-primary)]">Watch</span>
                             </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Home</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<FaGithub />}>Repository</LabelItem> </li>
+                            <li className="hidden lg:block"> <Link to="/"><LabelItem icon={<CiHome />}>Home</LabelItem></Link> </li>
+                            <li className="hidden lg:block"> <Link to="/movies"><LabelItem icon={<MdOutlineLocalMovies />}>Movies</LabelItem></Link>  </li>
+                            <li className="hidden lg:block"> <Link to="/series"><LabelItem icon={<SiSteelseries />}>Series</LabelItem></Link> </li>
+                            <li className="hidden lg:block"> <a href="https://github.com/SnaiderDev/wikiWatch" target="_blank" rel="noopener noreferrer"><LabelItem icon={<FaGithub />}>Repository</LabelItem></a> </li>
                         </> :
                         <>
                             <li className="text-3xl font-bold font-title">
                                 Wiki<span className="text-[var(--color-primary)]">Watch</span>
                             </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<CiHome />}>Inicio</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<SiSteelseries />}>Series</LabelItem> </li>
-                            <li className="hidden lg:block"> <LabelItem icon={<FaGithub />}>Repositorio</LabelItem> </li>
+                            <li className="hidden lg:block"> <Link to="/"><LabelItem icon={<CiHome />}>Inicio</LabelItem></Link> </li>
+                            <li className="hidden lg:block"> <Link to="/movies"><LabelItem icon={<MdOutlineLocalMovies />}>Películas</LabelItem></Link> </li>
+                            <li className="hidden lg:block"> <Link to="/series"><LabelItem icon={<SiSteelseries />}>Series</LabelItem></Link> </li>
+                            <li className="hidden lg:block"> <a href="https://github.com/SnaiderDev/wikiWatch" target="_blank" rel="noopener noreferrer"><LabelItem icon={<FaGithub />}>Repositorio</LabelItem></a> </li>
                         </>}
                 </ul>
             </nav>
