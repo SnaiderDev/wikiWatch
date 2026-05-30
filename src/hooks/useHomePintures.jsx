@@ -13,7 +13,7 @@ export function UseHomePintures(){
                     const backdrop_paths = data.results
                         .filter((movie) => movie.backdrop_path) // Filter out null paths
                         .map((movie) => `https://image.tmdb.org/t/p/original${movie.backdrop_path}`);
-                    console.log(backdrop_paths);
+                    // console.log(backdrop_paths);
                     setPintures(backdrop_paths);
                 } catch (error) {
                     console.error("Error fetching movie data:", error);
@@ -37,7 +37,7 @@ export function UseCardPinturesHome(){
                     .filter((movie) => movie.poster_path) // Filter out null paths
                     .slice(0, 3) // Take only the first 3
                     .map((movie) => `https://image.tmdb.org/t/p/original${movie.poster_path}`);
-                console.log(card_paths);
+               // console.log(card_paths);
                 setcardPintures(card_paths);
             } catch (error) {   
                 console.error("Error fetching movie data:", error);
