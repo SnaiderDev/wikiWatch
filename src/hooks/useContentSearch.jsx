@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { apikey } from '../config/apiKey';
+import { apikey } from '../config/apikey';
 export function UseMovieSearch(content) {
     const [searchPintures, setSearchPintures] = useState([]);
     useEffect(() => {
