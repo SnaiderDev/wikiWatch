@@ -1,25 +1,43 @@
-import { UseRatedMoviesPinturesCardHome } from "../hooks/useHomePintures";
-import { UsePopularMovies,  UseUpcomingMovies} from "../hooks/useMoviesHook";
-import { CardSeccion } from "./cards";
+import { Link } from "react-router-dom";
+import { UsePopularMovies,  UseUpcomingMovies,UseTopRatedMovies} from "../hooks/useMoviesHook";
+import { CardSeccion,Card } from "./cards";
 
 const TopRatedMovies = () => {
-    const topRatedMovies =  UseRatedMoviesPinturesCardHome();
+    const topRatedMovies =  UseTopRatedMovies();
     return (
-        <CardSeccion content = {topRatedMovies} title="Top Rated Movies" />
+        <CardSeccion title="Top Rated Movies">
+            {topRatedMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm" >
+                    <Card key={movie.id} image={movie.image} text={movie.name} />
+                </Link>
+            ))}
+        </CardSeccion>
     )
 }
 
 const PopularMovies = () => {
     const popularMovies = UsePopularMovies()
     return (
-        <CardSeccion content={popularMovies} title="Popular Movies" />
+        <CardSeccion title="Popular Movies">
+            {popularMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm">
+                    <Card key={movie.id} image={movie.image} text={movie.name} />
+                </Link>
+            ))}
+        </CardSeccion>
     )
 }
 
 const UpcomingMovies = () => {
     const upcomingMovies = UseUpcomingMovies()
     return (
-        <CardSeccion content={upcomingMovies} title="Upcoming Movies" />
+        <CardSeccion title="Upcoming Movies">
+            {upcomingMovies.map((movie) => (
+                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm">
+                    <Card key={movie.id} image={movie.image} text={movie.name} />
+                </Link>
+            ))}
+        </CardSeccion>
     )
 }
 
