@@ -31,15 +31,7 @@ export function LabelItem ({ icon, children })  {
     );
 };
 
-export function ContentSection ({title, content, children}) {
-    return (
-        <article className="flex-col gap-2 p-2 justify-center items-center">
-            <h2 className="font-bold text-center text-3xl font-subtitle text-[var(--color-primary)]">{title}</h2>
-            <p>{content}</p>
-            {children}
-        </article>
-    )
-}
+
 
 export function Icon ({ children }) {
     return (

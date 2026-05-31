@@ -61,6 +61,7 @@ export function UseRatedMoviesPinturesCardHome(){
                     .filter((movie) => movie.poster_path) // Filter out null paths
                     .slice(0, 6) // Take only the first 6
                     .map((movie) => ({
+                        id: movie.id,
                         image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
                         name: movie.title,
                     }));
@@ -88,6 +89,7 @@ export function UseRatedSeriesPinturesCardHome(){
                     .filter((series) => series.poster_path) // Filter out null paths
                     .slice(0, 6) // Take only the first 6
                     .map((series) => ({
+                        id: series.id,
                         image: `https://image.tmdb.org/t/p/original${series.poster_path}`,
                         name: series.name,
                     }));

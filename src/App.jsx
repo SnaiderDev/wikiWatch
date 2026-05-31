@@ -2,11 +2,11 @@ import { Header } from "./components/Header";
 import Home from "./components/home";
 import { Movies } from "./components/Movies";
 import { Series } from "./components/Series";
-import { LanguageProvider } from "./context/ContextLanguage";
 import { FaCircleArrowUp } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer";
 import { Routes, Route,BrowserRouter} from "react-router-dom";
+import { Info } from "./components/Info";
 
 const TopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +35,7 @@ const TopButton = () => {
 
 function App() {
   return (
-    <LanguageProvider>
+    
       <BrowserRouter>
         <main className="h-min-screen relative  bg-neutral-950 text-neutral-50 font-iu">
           <Header />
@@ -43,12 +43,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/series" element={<Series />} />
+            <Route path= ":type/:id" element={<Info />} />
           </Routes>
           <Footer />
           <TopButton />
         </main>
       </BrowserRouter>
-    </LanguageProvider>
+
   );
 }
 
