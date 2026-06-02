@@ -5,10 +5,11 @@ import { CiStar } from "react-icons/ci";
 function InfoBase({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
   if (!details) return null;
+  console.log(details);
 
   return (
-    <article>
-      <div className="relative h-min w-full">
+    <main>
+      <article className="relative h-min w-full">
         <div className="h-full w-full opacity-20 absolute">
           <img
             src={details.backdrop}
@@ -27,7 +28,7 @@ function InfoBase({ id, type }) {
             <header className="flex items-center gap-4">
               <h1 className="text-2xl font-bold">{details.title}</h1>{" "}
               <span className="p-1 bg-[var(--color-primary)] rounded-sm flex items-center justify-center gap-1">
-                <CiStar className= "scale-150"/> {details.vote_average}
+                <CiStar className="scale-150" /> {details.vote_average}
               </span>
             </header>
             <div>{details.tagline}</div>
@@ -37,8 +38,11 @@ function InfoBase({ id, type }) {
               <div className="flex flex-wrap gap-2">
                 {details.genres
                   ? details.genres.map((genre) => (
-                      <div className="p-1 text-center rounded-sm  bg-[var(--color-primary)]">
-                        <span key={genre}>{genre}</span>
+                      <div
+                        key={genre}
+                        className="p-1 text-center rounded-sm bg-[var(--color-primary)]"
+                      >
+                        <span>{genre}</span>
                       </div>
                     ))
                   : "No genres available"}
@@ -46,8 +50,37 @@ function InfoBase({ id, type }) {
             </div>
           </div>
         </article>
-      </div>
-    </article>
+      </article>
+
+      {
+        details.production_companies && details.production_companies.length > 0 ? (
+          <article className="flex flex-col items-center gap-2">
+            <header className = "p-2 text-[var(--color-primary)]">
+              <h2 className="text-xl font-bold">Production Companies</h2>
+            </header>
+            <div className="flex flex-wrap gap-4 p-4">
+              {details.production_companies.map((company) => (
+                <div
+                  key={company.name}
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  {company.logo && (
+                    <img
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      className="h-12 object-contain bg-amber-50 p-2"
+                    />
+                  )}
+                  <span>{company.name}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ) : (
+          "No production companies available"
+        )
+      }
+    </main>
   );
 }
 
