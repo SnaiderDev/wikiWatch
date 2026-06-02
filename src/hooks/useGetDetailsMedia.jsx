@@ -8,6 +8,16 @@ export function UseGetDetailsMedia(id, type) {
             switch (type) {
                 case "movie": {
                     const getDetailsMovie = async () => {
+                        const  getacting = async () => {
+                            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apikey}&language=en-US`);
+                            const data = await response.json();
+                            const cast = data.cast?.slice(0, 10).map((actor) => ({
+                                name: actor.name,
+                                profile: actor.profile_path ? `https://image.tmdb.org/t/p/original${actor.profile_path}` : ""
+                            })) ?? [];
+                            return cast;
+                        }
+                        
                         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=en-US`);
                         const data = await response.json();
                         const res = {
@@ -20,10 +30,12 @@ export function UseGetDetailsMedia(id, type) {
                             vote_average: data.vote_average != null ? Number(data.vote_average.toFixed(2)) + " / 10" : data.vote_average + " / 10",
                             production_companies: data.production_companies?.map((company)=> {
                                 const  name = company.name
-                                const logo = company.logo_path ? `https://image.tmdb.org/t/p/original${company.logo_path}}` : ""
+                                const logo = company.logo_path ? `https://image.tmdb.org/t/p/original${company.logo_path}` : ""
                                 return {name, logo}
-                            }).filter(company => company.logo) ?? []
+                            }).filter(company => company.logo) ?? [],
+                            acting: await getacting()
                         }
+                    
                         setDetails(res);
                     }
                     getDetailsMovie();

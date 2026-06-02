@@ -80,6 +80,34 @@ function InfoBase({ id, type }) {
           "No production companies available"
         )
       }
+      {
+        details.acting && details.acting.length > 0 ? (
+          <article className="flex flex-col items-center gap-2">
+            <header className = "p-2 text-[var(--color-primary)]">
+                <h2 className="text-xl font-bold">Main Cast</h2>
+            </header>
+            <div className="flex flex-wrap justify-center gap-4 p-4">
+              {details.acting.map((actor) => (
+                <div
+                  key={actor.name}
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  {actor.profile && (
+                    <img
+                      src={actor.profile}
+                      alt={`${actor.name} profile`}
+                      className="h-16 object-cover rounded-full"
+                    />
+                  )}
+                  <span>{actor.name}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ) : (
+          "No main cast available"
+        )
+      }
     </main>
   );
 }
