@@ -17,7 +17,7 @@ export function UseGetDetailsMedia(id, type) {
                             overview: data.overview,
                             tagline: data.tagline,
                             genres: data.genres?.map((genre) => genre.name) ?? [],
-                            vote_average: data.vote_average
+                            vote_average: data.vote_average != null ? Number(data.vote_average.toFixed(2)) + " / 10" : data.vote_average + " / 10"
                         }
                         setDetails(res);
                     }
@@ -35,7 +35,7 @@ export function UseGetDetailsMedia(id, type) {
                             overview: data.overview,
                             tagline: data.tagline,
                             genres: data.genres?.map((genre) => genre.name) ?? [],
-                            vote_average: data.vote_average
+                            vote_average: data.vote_average != null ? Number(data.vote_average.toFixed(2)) + " / 10" : data.vote_average + " / 10"
                         }
                         setDetails(res);
                     }
