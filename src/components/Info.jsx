@@ -51,6 +51,33 @@ function InfoBase({ id, type }) {
           </div>
         </article>
       </article>
+      {
+        details.videos && details.videos.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+  <div className="w-full p-4">
+    {details.videos.map(
+      (video) =>
+        video.site === "YouTube" && (
+          <div
+            key={video.key}
+            className="w-full aspect-video"
+          >
+            <iframe
+              title="YouTube video player"
+              src={`https://www.youtube.com/embed/${video.key}?modestbranding=1`}
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )
+    )}
+  </div>
+</article>
+        ) : (
+          "No videos available"
+        )
+      }
 
       {
         details.production_companies && details.production_companies.length > 0 ? (
@@ -128,6 +155,7 @@ function InfoBase({ id, type }) {
           "No images available"
         )
       }
+      
     </main>
   );
 }
