@@ -75,7 +75,7 @@ function InfoBase({ id, type }) {
   </div>
 </article>
         ) : (
-          "No videos available"
+          <></>
         )
       }
 
@@ -156,6 +156,36 @@ function InfoBase({ id, type }) {
         )
       }
       
+      {details.reviews && details.reviews.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <header className = "p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold">Reviews</h2>
+          </header>
+          <div className="flex flex-col gap-4 p-4">
+            {details.reviews.map((review) => (
+              <div
+                key={review.author}
+                className="flex flex-col gap-2"
+              >
+                <div className="flex items-center gap-2">
+                  {review.profile && (
+                    <img
+                      src={review.profile}
+                      alt={`${review.author} profile`}
+                      className="h-12 object-cover rounded-full"
+                    />
+                  )}
+                  <span className="font-bold">{review.author}</span>
+                  <span className="text-lg">{review.rating}/10</span>
+                </div>
+                <p>{review.content}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : (
+        "No reviews available"
+      )}
     </main>
   );
 }

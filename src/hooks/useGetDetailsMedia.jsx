@@ -36,6 +36,17 @@ export function UseGetDetailsMedia(id, type) {
                             return videos;
                         }
                         
+                        const getReviews = async () => {
+                            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apikey}&language=en-US`);
+                            const data = await response.json();
+                            const reviews = data.results?.slice(0, 5).map((review) => ({
+                                author: review.author,
+                                content: review.content,
+                                profile: review.author_details.avatar_path ? `https://image.tmdb.org/t/p/original${review.profile_path}` : ""
+                            })) ?? [];
+                            return reviews;
+                        }
+
                         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=en-US`);
                         const data = await response.json();
                         const res = {
@@ -53,7 +64,8 @@ export function UseGetDetailsMedia(id, type) {
                             }).filter(company => company.logo) ?? [],
                             acting: await getacting(),
                             images: await getImages(),
-                            videos: await getVideos()
+                            videos: await getVideos(),
+                            reviews: await getReviews()
                         }
                     
                         setDetails(res);
