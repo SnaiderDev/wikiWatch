@@ -17,6 +17,13 @@ export function UseGetDetailsMedia(id, type) {
                             })) ?? [];
                             return cast;
                         }
+
+                        const getImages =  async () => {
+                            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/images?api_key=${apikey}`);
+                            const data = await response.json();
+                            const backdrops = data.backdrops?.slice(0, 5).map((backdrop) => `https://image.tmdb.org/t/p/original${backdrop.file_path}`) ?? [];
+                            return backdrops;
+                        }
                         
                         const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=en-US`);
                         const data = await response.json();
@@ -33,7 +40,8 @@ export function UseGetDetailsMedia(id, type) {
                                 const logo = company.logo_path ? `https://image.tmdb.org/t/p/original${company.logo_path}` : ""
                                 return {name, logo}
                             }).filter(company => company.logo) ?? [],
-                            acting: await getacting()
+                            acting: await getacting(),
+                            images: await getImages()
                         }
                     
                         setDetails(res);

@@ -80,6 +80,7 @@ function InfoBase({ id, type }) {
           "No production companies available"
         )
       }
+    
       {
         details.acting && details.acting.length > 0 ? (
           <article className="flex flex-col items-center gap-2">
@@ -106,6 +107,25 @@ function InfoBase({ id, type }) {
           </article>
         ) : (
           "No main cast available"
+        )
+      }
+      {
+        details.images && details.images.length > 0 ? (
+          <article className="flex flex-col items-center gap-2">
+           
+            <div className="flex flex-wrap justify-center gap-4 p-4">
+                {details.images.map((image, index) => (
+                    <img
+                        key={index}
+                        src={image}
+                        alt={`Image ${index + 1}`}
+                        className="h-48 object-cover rounded-sm"
+                    />
+                ))}
+            </div>
+          </article>
+        ) : (
+          "No images available"
         )
       }
     </main>
