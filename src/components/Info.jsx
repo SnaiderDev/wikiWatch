@@ -54,18 +54,18 @@ function InfoBase({ id, type }) {
       {
         details.videos && details.videos.length > 0 ? (
         <article className="flex flex-col items-center gap-2">
-  <div className="w-full p-4">
+  <div className="w-full h-100">
     {details.videos.map(
       (video) =>
         video.site === "YouTube" && (
           <div
             key={video.key}
-            className="w-full aspect-video"
+            className="w-full h-full aspect-video"
           >
             <iframe
               title="YouTube video player"
               src={`https://www.youtube.com/embed/${video.key}?modestbranding=1`}
-              className="w-full h-full rounded-lg"
+              className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
