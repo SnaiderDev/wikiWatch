@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { UseGetDetailsMedia } from "../hooks/useGetDetailsMedia";
 import { CiStar } from "react-icons/ci";
+import { FaPerson } from "react-icons/fa6";
+import { IoPersonCircle } from "react-icons/io5";
 
 function InfoBase({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
@@ -165,18 +167,13 @@ function InfoBase({ id, type }) {
             {details.reviews.map((review) => (
               <div
                 key={review.author}
-                className="flex flex-col gap-2"
+                className="flex flex-col gap-2 bg-gray-950 p-2"
               >
                 <div className="flex items-center gap-2">
-                  {review.profile && (
-                    <img
-                      src={review.profile}
-                      alt={`${review.author} profile`}
-                      className="h-12 object-cover rounded-full"
-                    />
-                  )}
+                <span>
+                    <IoPersonCircle className="scale-150" />
+                </span>
                   <span className="font-bold">{review.author}</span>
-                  <span className="text-lg">{review.rating}/10</span>
                 </div>
                 <p>{review.content}</p>
               </div>
