@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { InfoDetails, InfoDetailsMovie } from "./InfoDetails";
 import { InfoDetailsTV } from "./InfoDetailsTv";
+import { InfoDetailsMovie } from "./InfoDetailsMovie";
 
 export function InfoUknown() {
   return (
