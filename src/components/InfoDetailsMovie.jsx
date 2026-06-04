@@ -6,9 +6,7 @@ import { IoPersonCircle } from "react-icons/io5";
 
 export function InfoDetailsMovie({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
-  if (!details) return null;
-  console.log(details);
-
+  if (!details) return null
   return (
     <main>
       <article className="relative h-min w-full">
@@ -171,7 +169,7 @@ export function InfoDetailsMovie({ id, type }) {
               >
                 <div className="flex items-center gap-2">
                 <span>
-                    <IoPersonCircle className="scale-150" />
+                    <IoPersonCircle className="scale-150 text-[var(--color-primary)]" />
                 </span>
                   <span className="font-bold">{review.author}</span>
                 </div>
