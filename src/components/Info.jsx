@@ -1,13 +1,6 @@
 import { useParams } from "react-router-dom";
-import { InfoDetails } from "./InfoDetails";
-
-export function InfoMovie({ id, type }) {
-  return <InfoDetails id={id} type={type} />;
-}
-
-export function InfoSeries({ id, type }) {
-  return <InfoDetails id={id} type={type} />;
-}
+import { InfoDetails, InfoDetailsMovie } from "./InfoDetails";
+import { InfoDetailsTV } from "./InfoDetailsTv";
 
 export function InfoUknown() {
   return (
@@ -29,9 +22,9 @@ export function Info() {
   return (
     <article>
       {type === "movie" ? (
-        <InfoMovie id={id} type={type} />
+        <InfoDetailsMovie id={id} type={type} />
       ) : type === "series" ? (
-        <InfoSeries id={id} type={type} />
+        <InfoDetailsTV id={id} type={type} />
       ) : (
         <InfoUknown />
       )}

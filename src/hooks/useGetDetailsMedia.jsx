@@ -28,7 +28,7 @@ export function UseGetDetailsMedia(id, type) {
                         const getVideos = async () => {
                             const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apikey}&language=en-US`)
                             const data = await response.json();
-                            const videos = data.results?.slice(0, 1).map((video) => ({
+                            const videos = data.results?.filter((video) => video.type === "Trailer").slice(0, 1).map((video) => ({
                                 name: video.name,
                                 key: video.key,
                                 site: video.site

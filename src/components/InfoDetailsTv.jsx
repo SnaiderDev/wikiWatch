@@ -4,7 +4,7 @@ import { CiStar } from "react-icons/ci";
 import { FaPerson } from "react-icons/fa6";
 import { IoPersonCircle } from "react-icons/io5";
 
-export function InfoDetailsMovie({ id, type }) {
+export function InfoDetailsTV({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
   if (!details) return null;
   console.log(details);
