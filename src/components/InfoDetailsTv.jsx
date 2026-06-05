@@ -1,4 +1,3 @@
-
 import { UseGetDetailsMedia } from "../hooks/useGetDetailsMedia";
 import { CiStar } from "react-icons/ci";
 import { FaPerson } from "react-icons/fa6";
@@ -38,144 +37,44 @@ export function InfoDetailsTV({ id, type }) {
             <div>
               <span className="font-bold">Genres: </span>
               <div className="flex flex-wrap gap-2">
-                {details.genres
-                  ? details.genres.map((genre) => (
-                      <div
-                        key={genre}
-                        className="p-1 text-center rounded-sm bg-[var(--color-primary)]"
-                      >
-                        <span>{genre}</span>
-                      </div>
-                    ))
-                  : <>  </>}
+                {details.genres ? (
+                  details.genres.map((genre) => (
+                    <div
+                      key={genre}
+                      className="p-1 text-center rounded-sm bg-[var(--color-primary)]"
+                    >
+                      <span>{genre}</span>
+                    </div>
+                  ))
+                ) : (
+                  <> </>
+                )}
               </div>
             </div>
           </div>
         </article>
       </article>
-      {
-        details.videos && details.videos.length > 0 ? (
+   
+      {details.production_companies &&
+      details.production_companies.length > 0 ? (
         <article className="flex flex-col items-center gap-2">
-  <div className="w-full h-100">
-    {details.videos.map(
-      (video) =>
-        video.site === "YouTube" && (
-          <div
-            key={video.key}
-            className="w-full h-full aspect-video"
-          >
-            <iframe
-              title="YouTube video player"
-              src={`https://www.youtube.com/embed/${video.key}?modestbranding=1`}
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        )
-    )}
-  </div>
-</article>
-        ) : (
-          <></>
-        )
-      }
-
-      {
-        details.production_companies && details.production_companies.length > 0 ? (
-          <article className="flex flex-col items-center gap-2">
-            <header className = "p-2 text-[var(--color-primary)]">
-              <h2 className="text-xl font-bold">Production Companies</h2>
-            </header>
-            <div className="flex flex-wrap gap-4 p-4">
-              {details.production_companies.map((company) => (
-                <div
-                  key={company.name}
-                  className="flex flex-col items-center justify-center gap-2"
-                >
-                  {company.logo && (
-                    <img
-                      src={company.logo}
-                      alt={`${company.name} logo`}
-                      className="h-12 object-contain bg-amber-50 p-2"
-                    />
-                  )}
-                  <span>{company.name}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-        ) : (
-          <></>
-        )
-      }
-    
-      {
-        details.acting && details.acting.length > 0 ? (
-          <article className="flex flex-col items-center gap-2">
-            <header className = "p-2 text-[var(--color-primary)]">
-                <h2 className="text-xl font-bold">Main Cast</h2>
-            </header>
-            <div className="flex flex-wrap justify-center gap-4 p-4">
-              {details.acting.map((actor) => (
-                <div
-                  key={actor.name}
-                  className="flex flex-col items-center justify-center gap-2"
-                >
-                  {actor.profile && (
-                    <img
-                      src={actor.profile}
-                      alt={`${actor.name} profile`}
-                      className="h-16 object-cover rounded-full"
-                    />
-                  )}
-                  <span>{actor.name}</span>
-                </div>
-              ))}
-            </div>
-          </article>
-        ) : (
-          <></>
-        )
-      }
-      {
-        details.images && details.images.length > 0 ? (
-          <article className="flex flex-col items-center gap-2">
-           
-            <div className="flex flex-wrap justify-center gap-4 p-4">
-                {details.images.map((image, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        alt={`Image ${index + 1}`}
-                        className="h-48 object-cover rounded-sm"
-                    />
-                ))}
-            </div>
-          </article>
-        ) : (
-          <></>
-        )
-      }
-      
-      {details.reviews && details.reviews.length > 0 ? (
-        <article className="flex flex-col items-center gap-2">
-          <header className = "p-2 text-[var(--color-primary)]">
-            <h2 className="text-xl font-bold">Reviews</h2>
+          <header className="p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold">Production Companies</h2>
           </header>
-          <div className="flex flex-col gap-4 p-4">
-            {details.reviews.map((review) => (
+          <div className="flex flex-wrap gap-4 p-4">
+            {details.production_companies.map((company) => (
               <div
-                key={review.author}
-                className="flex flex-col gap-2 bg-gray-950 p-2"
+                key={company.name}
+                className="flex flex-col items-center justify-center gap-2"
               >
-                <div className="flex items-center gap-2">
-                <span>
-                    <IoPersonCircle className="scale-150" />
-                </span>
-                  <span className="font-bold">{review.author}</span>
-                </div>
-                <p>{review.content}</p>
+                {company.logo && (
+                  <img
+                    src={company.logo}
+                    alt={`${company.name} logo`}
+                    className="h-12 object-contain bg-amber-50 p-2"
+                  />
+                )}
+                <span>{company.name}</span>
               </div>
             ))}
           </div>
@@ -183,6 +82,35 @@ export function InfoDetailsTV({ id, type }) {
       ) : (
         <></>
       )}
+      {
+        details.seasons && details.seasons.length > 1 ? (
+          <article className = "flex flex-col justify-center gap-2">
+            <header className="p-2 text-[var(--color-primary)]">
+              <h2 className="text-xl font-bold text-center">Seasons</h2>
+            </header>
+            <div className="flex flex-wrap gap-4 p-4 justify-center"> 
+              {
+                details.seasons.map((season)=>(
+                  <div key={season.name} className="flex flex-col gap-2 basis-3xs">
+                    <img
+                      src={season.poster}
+                      alt={`${season.name} poster`}
+                      className="w-full h-86 object-cover rounded-sm"
+                    />
+                    <div className="w-full flex  items-center  gap-3">
+                      {season.name} 
+                      <span className="flex justify-center items-center gap-2 bg-[var(--color-primary)] text-white p-1 rounded-sm"><CiStar className="scale-150" /> {season.vote_average}</span>
+                    </div>
+                    <p>
+                      {season.overview}
+                    </p>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+        ) : <></>
+      }
     </main>
   );
 }

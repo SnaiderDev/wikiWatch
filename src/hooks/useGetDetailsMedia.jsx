@@ -83,7 +83,21 @@ export function UseGetDetailsMedia(id, type) {
                             overview: data.overview,
                             tagline: data.tagline,
                             genres: data.genres?.map((genre) => genre.name) ?? [],
-                            vote_average: data.vote_average != null ? Number(data.vote_average.toFixed(2)) + " / 10" : data.vote_average + " / 10"
+                            vote_average: data.vote_average != null ? Number(data.vote_average.toFixed(2)): data.vote_average,
+                            production_companies: data.production_companies?.map((company)=> {
+                                const  name = company.name
+                                const logo = company.logo_path ? `https://image.tmdb.org/t/p/original${company.logo_path}` : ""
+                                return {name, logo}
+                            }).filter(company => company.logo) ?? [],
+                            seasons: data.seasons?.map((season) => (
+                                {
+                                    name: season.name,
+                                    overview: season.overview,
+                                    episode_count: season.episode_count,
+                                    vote_average: season.vote_average,
+                                    poster: season.poster_path ? `https://image.tmdb.org/t/p/original${season.poster_path}` : ""
+                                }
+                            ))
                         }
                         setDetails(res);
                     }
