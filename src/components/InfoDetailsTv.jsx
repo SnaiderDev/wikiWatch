@@ -83,6 +83,32 @@ export function InfoDetailsTV({ id, type }) {
         <></>
       )}
       {
+        details.createdBy && details.createdBy.length > 0 ? (
+          <article className="flex flex-col items-center gap-2">
+            <header className = "p-2 text-[var(--color-primary)]">
+                <h2 className="text-xl font-bold">Main Cast</h2>
+            </header>
+            <div className="flex flex-wrap justify-center gap-4 p-4">
+              {details.createdBy.map((created) => (
+                <div
+                  key={created.name}
+                  className="flex flex-col items-center justify-center gap-2"
+                >
+                  {created.poster && (
+                    <img
+                      src={created.poster}
+                      alt={`${created.name} profile`}
+                      className="h-16 object-cover rounded-full"
+                    />
+                  )}
+                  <span>{created.name}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ): <></>
+      }
+      {
         details.seasons && details.seasons.length > 1 ? (
           <article className = "flex flex-col justify-center gap-2">
             <header className="p-2 text-[var(--color-primary)]">
