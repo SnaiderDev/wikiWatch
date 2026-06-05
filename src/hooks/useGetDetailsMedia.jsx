@@ -111,6 +111,18 @@ export function UseGetDetailsMedia(id, type) {
           break;
         case "series":
           {
+            const getImages = async () => {
+                const response = await fetch (`https://api.themoviedb.org/3/tv/${id}/images?api_key=${apikey}`)
+                const data = await response.json()
+               const backdrops =
+                  data.backdrops
+                    ?.slice(0, 5)
+                    .map(
+                      (backdrop) =>
+                        `https://image.tmdb.org/t/p/original${backdrop.file_path}`,
+                    ) ?? [];
+                return backdrops;
+            }
             const getDetailsSeries = async () => {
               const response = await fetch(
                 `https://api.themoviedb.org/3/tv/${id}?api_key=${apikey}&language=en-US`,
@@ -157,6 +169,7 @@ export function UseGetDetailsMedia(id, type) {
                     ? `https://image.tmdb.org/t/p/original${season.poster_path}`
                     : "",
                 })),
+                images: await getImages()
               };
               setDetails(res);
             };
