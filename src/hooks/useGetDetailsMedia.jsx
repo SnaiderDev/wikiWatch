@@ -126,6 +126,7 @@ export function UseGetDetailsMedia(id, type) {
                   : "",
                 overview: data.overview,
                 tagline: data.tagline,
+                status:  data.status,
                 genres: data.genres?.map((genre) => genre.name) ?? [],
                 vote_average:
                   data.vote_average != null
