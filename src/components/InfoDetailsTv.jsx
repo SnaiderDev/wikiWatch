@@ -57,6 +57,28 @@ export function InfoDetailsTV({ id, type }) {
           </div>
         </article>
       </article>
+      {details.videos && details.videos.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <div className="w-full h-100">
+            {details.videos.map(
+              (video) =>
+                video.site === "YouTube" && (
+                  <div key={video.key} className="w-full h-full aspect-video">
+                    <iframe
+                      title="YouTube video player"
+                      src={`https://www.youtube.com/embed/${video.key}?modestbranding=1`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ),
+            )}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
    
       {details.production_companies &&
       details.production_companies.length > 0 ? (
@@ -134,6 +156,31 @@ export function InfoDetailsTV({ id, type }) {
           <></>
         )
       }
+      {details.reviews && details.reviews.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <header className="p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold">Reviews</h2>
+          </header>
+          <div className="flex flex-col gap-4 p-4">
+            {details.reviews.map((review) => (
+              <div
+                key={review.author}
+                className="flex flex-col gap-2 bg-gray-950 p-2"
+              >
+                <div className="flex items-center gap-2">
+                  <span>
+                    <IoPersonCircle className="scale-150 text-[var(--color-primary)]" />
+                  </span>
+                  <span className="font-bold">{review.author}</span>
+                </div>
+                <p>{review.content}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
     </main>
   );
 }

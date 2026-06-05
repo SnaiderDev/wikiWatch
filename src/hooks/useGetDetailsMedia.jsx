@@ -123,6 +123,37 @@ export function UseGetDetailsMedia(id, type) {
                     ) ?? [];
                 return backdrops;
             }
+
+            const getVideos = async () => {
+                const response = await fetch(
+                  `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${apikey}&language=en-US`,
+                );
+                const data = await response.json();
+                const videos =
+                  data.results
+                    ?.filter((video) => video.type === "Trailer")
+                    .slice(0, 1)
+                    .map((video) => ({
+                      name: video.name,
+                      key: video.key,
+                      site: video.site,
+                    })) ?? [];
+                return videos;
+              };
+
+               const getReviews = async () => {
+                const response = await fetch(
+                  `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${apikey}&language=en-US`,
+                );
+                const data = await response.json();
+                const reviews =
+                  data.results?.slice(0, 3).map((review) => ({
+                    author: review.author,
+                    content: review.content,
+                  })) ?? [];
+                return reviews;
+              };
+
             const getDetailsSeries = async () => {
               const response = await fetch(
                 `https://api.themoviedb.org/3/tv/${id}?api_key=${apikey}&language=en-US`,
@@ -169,7 +200,9 @@ export function UseGetDetailsMedia(id, type) {
                     ? `https://image.tmdb.org/t/p/original${season.poster_path}`
                     : "",
                 })),
-                images: await getImages()
+                images: await getImages(),
+                videos: await getVideos(),
+                reviews: await getReviews()
               };
               setDetails(res);
             };
