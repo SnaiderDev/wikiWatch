@@ -19,21 +19,29 @@ const ButtonAside = ({ icon, accion }) => {
 
 const SearchItems = ({ content }) => {
     const mediaSearch = UseMediaSearch(content);
+    console.log(mediaSearch)
     return (
         <div className="absolute top-16">
-            {mediaSearch.length > 0 ?
-                <div className="w-3 bg-amber-300">
-                    yes
-                </div>
-                :
-                <div>No results found</div>}
+            {
+                mediaSearch && mediaSearch.length > 0 ?
+                (
+                    mediaSearch.map((media)=>{
+                        <div>
+                            {
+                             media.title
+                            }
+                        </div>
+                    })
+                )
+                : <></>
+            }
         </div>
     );
 }
 const SearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchContent, setSearchContent] = useState("");
     const handleInput = (e) => {
-        setSearchTerm(e.target.value);
+        setSearchContent(e.target.value);
     };
 
     return (
@@ -42,11 +50,11 @@ const SearchBar = () => {
                 type="text"
                 placeholder={"Search..."}
                 className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10"
-                value={searchTerm}
+                value={searchContent}
                 onChange={handleInput}
             />
             <CiSearch className="group-active:scale-100 transition-all duration-300  text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
-            {searchTerm && <SearchItems content={searchTerm} />}
+            {searchContent && <SearchItems content={searchContent} />}
         </div>
     );
 };

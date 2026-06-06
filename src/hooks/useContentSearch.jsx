@@ -7,7 +7,13 @@ export function UseMovieSearch(content) {
             try {
                 const movies = await fetch(`https://api.themoviedb.org/3/search/movie?query=${content}&include_adult=false&language=en-US&page=1&api_key=${apikey}`);
                 const data = await movies.json();
-                const date_names = data.results.map((movie) => ({ id: movie.id, title: movie.title, path: movie.poster_path }));
+                const date_names = data.results.map((movie) => (
+                    { 
+                        id: movie.id,
+                        type: "movie",
+                        title: movie.title, 
+                        path:`https://image.tmdb.org/t/p/original${movie.poster_path}` 
+                    }));
                 setSearchPintures(date_names);
             } catch (error) {
                 console.error("Error fetching search data:", error);
@@ -26,7 +32,7 @@ export function UseSeriesSearch(content) {
             try {
                 const series = await fetch(`https://api.themoviedb.org/3/search/tv?query=${content}&include_adult=false&language=en-US&page=1&api_key=${apikey}`);
                 const data = await series.json();
-                const date_names = data.results.map((tv) => ({ id: tv.id, name: tv.name , path: tv.poster_path }));
+                const date_names = data.results.map((tv) => ({ id: tv.id,type: "tv" ,title: tv.name , path: tv.poster_path }));
                 setSearchPintures(date_names);
             } catch (error) {
                 console.error("Error fetching search data:", error);
