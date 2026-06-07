@@ -79,7 +79,7 @@ export function InfoDetailsTV({ id, type }) {
       ) : (
         <></>
       )}
-   
+
       {details.production_companies &&
       details.production_companies.length > 0 ? (
         <article className="flex flex-col items-center gap-2">
@@ -107,65 +107,60 @@ export function InfoDetailsTV({ id, type }) {
       ) : (
         <></>
       )}
-      
-      {
-        details.seasons && details.seasons.length > 1 ? (
-          <article className = "flex flex-col justify-center gap-2">
-            <header className="p-2 text-[var(--color-primary)]">
-              <h2 className="text-xl font-bold text-center">Seasons</h2>
-            </header>
-            <div className="flex flex-wrap gap-4 p-4 justify-center"> 
-              {
-                details.seasons.map((season)=>(
-                  <div key={season.name} className="flex flex-col gap-2 basis-3xs">
-                    <img
-                      src={season.poster}
-                      alt={`${season.name} poster`}
-                      className="w-full h-86 object-cover rounded-sm"
-                    />
-                    <div className="w-full flex  items-center  gap-3">
-                      {season.name} 
-                      <span className="flex justify-center items-center gap-2 bg-[var(--color-primary)] text-white p-1 rounded-sm"><CiStar className="scale-150" /> {season.vote_average}</span>
-                    </div>
-                    <p>
-                      {season.overview}
-                    </p>
-                  </div>
-                ))
-              }
-            </div>
-          </article>
-        ) : <></>
-      }
-      {
-        details.images && details.images.length > 0 ? (
-          <article className="flex flex-col items-center gap-2">
-           
-            <div className="flex flex-wrap justify-center gap-4 p-4">
-                {details.images.map((image, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        alt={`Image ${index + 1}`}
-                        className="h-48 object-cover rounded-sm"
-                    />
-                ))}
-            </div>
-          </article>
-        ) : (
-          <></>
-        )
-      }
+
+      {details.seasons && details.seasons.length > 1 ? (
+        <article className="flex flex-col justify-center gap-2">
+          <header className="p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold text-center">Seasons</h2>
+          </header>
+          <div className="flex flex-wrap gap-4 p-4 justify-center">
+            {details.seasons.map((season) => (
+              <div key={season.name} className="flex flex-col gap-2 basis-3xs">
+                <img
+                  src={season.poster}
+                  alt={`${season.name} poster`}
+                  className="w-full h-86 object-cover rounded-sm"
+                />
+                <div className="w-full flex  items-center  gap-3">
+                  {season.name}
+                  <span className="flex justify-center items-center gap-2 bg-[var(--color-primary)] text-white p-1 rounded-sm">
+                    <CiStar className="scale-150" /> {season.vote_average}
+                  </span>
+                </div>
+                <p>{season.overview}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
+      {details.images && details.images.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
+            {details.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="h-48 object-cover rounded-sm"
+              />
+            ))}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
       {details.reviews && details.reviews.length > 0 ? (
         <article className="flex flex-col items-center gap-2">
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Reviews</h2>
           </header>
-          <div className="flex flex-col gap-4 p-4">
+          <div className="flex flex-wrap justify-center align-center gap-4 p-4">
             {details.reviews.map((review) => (
               <div
                 key={review.author}
-                className="flex flex-col gap-2 bg-gray-950 p-2"
+                className="flex flex-col basis-2xl h-50 overflow-hidden gap-2 p-2"
               >
                 <div className="flex items-center gap-2">
                   <span>

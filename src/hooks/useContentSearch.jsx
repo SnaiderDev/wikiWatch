@@ -18,7 +18,7 @@ export function UseMovieSearch(content) {
             type: "movie",
             title: movie.title,
             popularity: movie.popularity,
-            poster: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
+            poster: `https://image.tmdb.org/t/p/original${movie.poster_path}`,            
           }));
         setSearchPintures(date_names);
       } catch (error) {

@@ -151,11 +151,11 @@ export function InfoDetailsMovie({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Reviews</h2>
           </header>
-          <div className="flex flex-col gap-4 p-4">
+          <div className="flex flex-wrap justify-center align-center gap-4 p-4">
             {details.reviews.map((review) => (
               <div
                 key={review.author}
-                className="flex flex-col gap-2 bg-gray-950 p-2"
+                className="flex flex-col basis-2xl h-50 overflow-hidden gap-2 p-2"
               >
                 <div className="flex items-center gap-2">
                   <span>

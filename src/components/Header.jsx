@@ -27,9 +27,9 @@ const SearchItems = ({ content,handleClear }) => {
                 (
                     mediaSearch.map((media) => (
                         <Link onClick={handleClear}  key={`${media.type}+${media.id}`} to={`/${media.type}/${media.id}`} className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
-                            <img src={media.poster} alt={media.title} className="h-14 w-10 object-cover rounded-sm" />
+                            <img src={media.poster} alt={media.title} className="h-28 w-20 object-cover rounded-sm" />
                             <div>
-                                <header className="text-sm font-medium text-neutral-50">{media.title}</header>
+                                <header className="text-sm font-bold text-neutral-50">{media.title}</header>
                             </div>
                         </Link>
                     ))

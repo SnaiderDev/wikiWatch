@@ -62,7 +62,7 @@ export function UseGetDetailsMedia(id, type) {
                 );
                 const data = await response.json();
                 const reviews =
-                  data.results?.slice(0, 3).map((review) => ({
+                  data.results?.slice(0, 6).map((review) => ({
                     author: review.author,
                     content: review.content,
                   })) ?? [];
@@ -147,7 +147,7 @@ export function UseGetDetailsMedia(id, type) {
                 );
                 const data = await response.json();
                 const reviews =
-                  data.results?.slice(0, 3).map((review) => ({
+                  data.results?.slice(0, 6).map((review) => ({
                     author: review.author,
                     content: review.content,
                   })) ?? [];
