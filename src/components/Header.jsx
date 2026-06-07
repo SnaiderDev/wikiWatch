@@ -21,19 +21,20 @@ const SearchItems = ({ content }) => {
     const mediaSearch = UseMediaSearch(content);
     console.log(mediaSearch)
     return (
-        <div className="absolute top-16">
+        <div className="absolute top-16 left-0 right-0 z-10 bg-neutral-900 rounded-md shadow-lg p-2">
             {
                 mediaSearch && mediaSearch.length > 0 ?
                 (
-                    mediaSearch.map((media)=>{
-                        <div>
-                            {
-                             media.title
-                            }
-                        </div>
-                    })
+                    mediaSearch.map((media) => (
+                        <Link key={`${media.type}+${media.id}`} to={`/${media.type}/${media.id}`} className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src={media.poster} alt={media.title} className="h-14 w-10 object-cover rounded-sm" />
+                            <div>
+                                <header className="text-sm font-medium text-neutral-50">{media.title}</header>
+                            </div>
+                        </Link>
+                    ))
                 )
-                : <></>
+                : null
             }
         </div>
     );
@@ -45,15 +46,15 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="group  relative flex  items-center justify-center gap-2 w-full">
+        <div className="group relative flex items-center justify-center gap-2 w-full">
             <input
                 type="text"
                 placeholder={"Search..."}
-                className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full  pr-10"
+                className="bg-neutral-800 text-neutral-50 p-2 rounded-md focus:outline-none w-full pr-10"
                 value={searchContent}
                 onChange={handleInput}
             />
-            <CiSearch className="group-active:scale-100 transition-all duration-300  text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
+            <CiSearch className="group-active:scale-100 transition-all duration-300 text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
             {searchContent && <SearchItems content={searchContent} />}
         </div>
     );
