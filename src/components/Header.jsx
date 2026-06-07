@@ -17,7 +17,7 @@ const ButtonAside = ({ icon, accion }) => {
     );
 };
 
-const SearchItems = ({ content }) => {
+const SearchItems = ({ content,handleClear }) => {
     const mediaSearch = UseMediaSearch(content);
     console.log(mediaSearch)
     return (
@@ -26,7 +26,7 @@ const SearchItems = ({ content }) => {
                 mediaSearch && mediaSearch.length > 0 ?
                 (
                     mediaSearch.map((media) => (
-                        <Link key={`${media.type}+${media.id}`} to={`/${media.type}/${media.id}`} className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                        <Link onClick={handleClear}  key={`${media.type}+${media.id}`} to={`/${media.type}/${media.id}`} className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
                             <img src={media.poster} alt={media.title} className="h-14 w-10 object-cover rounded-sm" />
                             <div>
                                 <header className="text-sm font-medium text-neutral-50">{media.title}</header>
@@ -41,9 +41,16 @@ const SearchItems = ({ content }) => {
 }
 const SearchBar = () => {
     const [searchContent, setSearchContent] = useState("");
+    
     const handleInput = (e) => {
         setSearchContent(e.target.value);
     };
+
+    const handleClear = () =>{
+        setSearchContent("")
+    }
+
+
 
     return (
         <div className="group relative flex items-center justify-center gap-2 w-full">
@@ -55,7 +62,7 @@ const SearchBar = () => {
                 onChange={handleInput}
             />
             <CiSearch className="group-active:scale-100 transition-all duration-300 text-2xl scale-150 absolute right-3 text-[var(--color-primary)]" />
-            {searchContent && <SearchItems content={searchContent} />}
+            {searchContent && <SearchItems content={searchContent} handleClear={handleClear} />}
         </div>
     );
 };
