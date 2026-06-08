@@ -2,6 +2,9 @@ import { UseGetDetailsMedia } from "../hooks/useGetDetailsMedia";
 import { CiStar } from "react-icons/ci";
 import { FaPerson } from "react-icons/fa6";
 import { IoPersonCircle } from "react-icons/io5";
+import { CardSeccion } from "./cards";
+import { Link } from "react-router-dom";
+import { Card } from "./cards";
 
 export function InfoDetailsMovie({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
@@ -199,6 +202,19 @@ export function InfoDetailsMovie({ id, type }) {
       ) : (
         <></>
       )}
+    {
+      details.similar && details.similar.length > 0 ?  (
+        <article>
+          <CardSeccion title="Upcoming Movies">
+            {details.similar.map((similar) => (
+                <Link key={similar.id} to={`/movie/${similar.id}`} className="basis-sm">
+                    <Card key={similar.id} image={similar.poster} text={similar.title} />
+                </Link>
+            ))}
+        </CardSeccion>
+        </article>
+      ): <></>
+    }
     </main>
   );
 }

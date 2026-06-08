@@ -81,6 +81,23 @@ export function UseGetDetailsMedia(id, type) {
                 return res 
               }
 
+              const getSimilar = async () => {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apikey}&language=en-US`)
+                const data = await response.json()
+                const res = data.results?.filter(
+                  (result) => (
+                    result.poster_path
+                  )
+                ).map((similar)=>({
+                  id:similar.id,
+                  type:"movie",
+                  title: similar.title,
+                  poster: `https://image.tmdb.org/t/p/original${similar.poster_path}`,
+                  
+                })).slice(0,6)
+                return res
+              }
+
               const response = await fetch(
                 `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=en-US`,
               );
@@ -114,7 +131,8 @@ export function UseGetDetailsMedia(id, type) {
                 images: await getImages(),
                 videos: await getVideos(),
                 reviews: await getReviews(),
-                provider: await getWhachProvider()
+                provider: await getWhachProvider(),
+                similar: await getSimilar()
               };
 
               setDetails(res);
