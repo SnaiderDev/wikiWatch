@@ -5,6 +5,7 @@ import { IoPersonCircle } from "react-icons/io5";
 
 export function InfoDetailsMovie({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
+  console.log(details);
   if (!details) return null;
   return (
     <main>
@@ -164,6 +165,33 @@ export function InfoDetailsMovie({ id, type }) {
                   <span className="font-bold">{review.author}</span>
                 </div>
                 <p>{review.content}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
+
+      {details.provider && details.provider.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <header className="p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold">Watch Providers</h2>
+          </header>
+          <div className="flex flex-wrap gap-4 p-4">
+            {details.provider.map((provider) => (
+              <div
+                key={provider.name}
+                className="flex flex-col items-center justify-center gap-2"
+              >
+                {provider.logo && (
+                  <img
+                    src={provider.logo}
+                    alt={`${provider.name} logo`}
+                    className="h-12 object-contain bg-amber-50 p-2"
+                  />
+                )}
+                <span>{provider.name}</span>
               </div>
             ))}
           </div>

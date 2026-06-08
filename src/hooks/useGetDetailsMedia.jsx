@@ -69,6 +69,18 @@ export function UseGetDetailsMedia(id, type) {
                 return reviews;
               };
 
+              const getWhachProvider =  async () => {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${apikey}`)
+                const data = await response.json()
+                const res = data.results?.US?.rent?.map((provider)=>(
+                  {
+                    name: provider.provider_name,
+                    logo: `https://image.tmdb.org/t/p/original${provider.logo_path}`
+                  }
+                )) ?? []
+                return res 
+              }
+
               const response = await fetch(
                 `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=en-US`,
               );
@@ -102,6 +114,7 @@ export function UseGetDetailsMedia(id, type) {
                 images: await getImages(),
                 videos: await getVideos(),
                 reviews: await getReviews(),
+                provider: await getWhachProvider()
               };
 
               setDetails(res);
