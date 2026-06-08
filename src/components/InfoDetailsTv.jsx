@@ -5,12 +5,13 @@ import { IoPersonCircle } from "react-icons/io5";
 import { CardSeccion } from "./cards";
 import { Link } from "react-router-dom";
 import { Card } from "./cards";
+import { InfoUknown } from "./Info";
 
 
 export function InfoDetailsTV({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
-  if (!details) return null;
-  console.log(details);
+  if (!details) return <InfoUknown/>;
+  
 
   return (
     <main>

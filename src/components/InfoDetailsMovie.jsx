@@ -5,11 +5,11 @@ import { IoPersonCircle } from "react-icons/io5";
 import { CardSeccion } from "./cards";
 import { Link } from "react-router-dom";
 import { Card } from "./cards";
+import { InfoUknown } from "./Info";
 
 export function InfoDetailsMovie({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
-  console.log(details);
-  if (!details) return null;
+  if (!details) return <InfoUknown/>;
   return (
     <main>
       <article className="relative h-min w-full">
