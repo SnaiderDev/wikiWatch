@@ -2,6 +2,10 @@ import { UseGetDetailsMedia } from "../hooks/useGetDetailsMedia";
 import { CiStar } from "react-icons/ci";
 import { FaPerson } from "react-icons/fa6";
 import { IoPersonCircle } from "react-icons/io5";
+import { CardSeccion } from "./cards";
+import { Link } from "react-router-dom";
+import { Card } from "./cards";
+
 
 export function InfoDetailsTV({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
@@ -176,6 +180,46 @@ export function InfoDetailsTV({ id, type }) {
       ) : (
         <></>
       )}
+
+       {details.provider && details.provider.length > 0 ? (
+        <article className="flex flex-col items-center gap-2">
+          <header className="p-2 text-[var(--color-primary)]">
+            <h2 className="text-xl font-bold">Watch Providers</h2>
+          </header>
+          <div className="flex flex-wrap gap-4 p-4">
+            {details.provider.map((provider) => (
+              <div
+                key={provider.name}
+                className="flex flex-col items-center justify-center gap-2"
+              >
+                {provider.logo && (
+                  <img
+                    src={provider.logo}
+                    alt={`${provider.name} logo`}
+                    className="h-12 object-contain bg-amber-50 p-2"
+                  />
+                )}
+                <span>{provider.name}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      ) : (
+        <></>
+      )}
+    {
+      details.similar && details.similar.length > 0 ?  (
+        <article>
+          <CardSeccion title="Upcoming Movies">
+            {details.similar.map((similar) => (
+                <Link key={similar.id} to={`/series/${similar.id}`} className="basis-sm">
+                    <Card key={similar.id} image={similar.poster} text={similar.title} />
+                </Link>
+            ))}
+        </CardSeccion>
+        </article>
+      ): <></>
+    }
     </main>
   );
 }

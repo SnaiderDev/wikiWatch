@@ -185,6 +185,35 @@ export function UseGetDetailsMedia(id, type) {
                 return reviews;
               };
 
+              const getWhachProvider =  async () => {
+                const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${apikey}`)
+                const data = await response.json()
+                const res = data.results?.US?.flatrate?.map((provider)=>(
+                  {
+                    name: provider.provider_name,
+                    logo: `https://image.tmdb.org/t/p/original${provider.logo_path}`
+                  }
+                )) ?? []
+                return res 
+              }
+
+              const getSimilar = async () => {
+                const response = await fetch(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=${apikey}&language=en-US`)
+                const data = await response.json()
+                const res = data.results?.filter(
+                  (result) => (
+                    result.poster_path
+                  )
+                ).map((similar)=>({
+                  id:similar.id,
+                  type:"series",
+                  title: similar.original_name,
+                  poster: `https://image.tmdb.org/t/p/original${similar.poster_path}`,
+                  
+                })).slice(0,6)
+                return res
+              }
+
             const getDetailsSeries = async () => {
               const response = await fetch(
                 `https://api.themoviedb.org/3/tv/${id}?api_key=${apikey}&language=en-US`,
@@ -233,7 +262,9 @@ export function UseGetDetailsMedia(id, type) {
                 })),
                 images: await getImages(),
                 videos: await getVideos(),
-                reviews: await getReviews()
+                reviews: await getReviews(),
+                similar: await getSimilar(),
+                provider: await getWhachProvider(),
               };
               setDetails(res);
             };
