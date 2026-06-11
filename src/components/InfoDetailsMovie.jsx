@@ -214,7 +214,7 @@ export function InfoDetailsMovie({ id, type }) {
             {details.similar.map((similar) => (
               <Link
                 key={similar.id}
-                to={`/movie/${similar.id}`}
+                to={`/movies/${similar.id}`}
                 className="basis-sm"
               >
                 <Card

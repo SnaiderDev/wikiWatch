@@ -110,7 +110,7 @@ export async function DetailMovie(id) {
         ?.filter((result) => result.poster_path)
         .map((similar) => ({
           id: similar.id,
-          type: "movie",
+          type: "movies",
           title: similar.title,
           poster: `https://image.tmdb.org/t/p/original${similar.poster_path}`,
         }))
