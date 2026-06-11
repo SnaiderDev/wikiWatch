@@ -6,7 +6,7 @@ export function UseGetDetailsMedia(id, type) {
   useEffect(() => {
     try {
       switch (type) {
-        case "movie":
+        case "movies":
           {
             const getDetailsMovie = async () => {
               const getacting = async () => {

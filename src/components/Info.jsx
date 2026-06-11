@@ -21,7 +21,7 @@ export function Info() {
   const { type, id } = useParams();
   return (
     <article>
-      {type === "movie" ? (
+      {type === "movies" ? (
         <InfoDetailsMovie id={id} type={type} />
       ) : type === "series" ? (
         <InfoDetailsTV id={id} type={type} />

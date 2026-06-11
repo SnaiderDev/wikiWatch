@@ -63,7 +63,7 @@ const MoviesCardSection = () => {
             <CardSeccion>
                 {
                     ratedPintures.map((movie) =>(
-                    <Link key={movie.id} to={`/movies/${movie.id}`}>
+                    <Link key={movie.id} to={`/movies/${movie.id}`} className="basis-sm">
                         <Card key={movie.id} image={movie.image} text={movie.name} />
                     </Link>
                      
@@ -90,7 +90,7 @@ const SeriesCardSection = () => {
             <CardSeccion>
                 {
                     ratedSeries.map((serie) =>(
-                    <Link key={serie.id} to={`/series/${serie.id}`}>
+                    <Link key={serie.id} to={`/series/${serie.id}`} className="basis-sm">
                         <Card key={serie.id} image={serie.image} text={serie.name} />
                     </Link>
                      

@@ -62,7 +62,7 @@ export function UseRatedMoviesPinturesCardHome(){
                     .slice(0, 6) // Take only the first 6
                     .map((movie) => ({
                         id: movie.id,
-                        type: "movie",
+                        type: "movies",
                         image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
                         name: movie.title,
                     }));
