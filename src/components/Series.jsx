@@ -8,7 +8,7 @@ const TopRatedSeries = () => {
         <CardSeccion title="Top Rated Series">
             {
                 series.map((serie) => (
-                    <Link key={serie.id} to={`/series/${serie.id}`} className="basis-sm">
+                    <Link key={serie.id} to={`/series/${serie.id}/${serie.name}`} className="basis-sm">
                         <Card key={serie.id} image={serie.image} text={serie.name} />
                     </Link>
                 ))
@@ -23,7 +23,7 @@ const PopularSeries = () => {
         <CardSeccion title="Popular Series">
             {
                 series.map((serie) => (
-                    <Link key={serie.id} to={`/series/${serie.id}`} className="basis-sm">
+                    <Link key={serie.id} to={`/series/${serie.id}/${serie.name}`} className="basis-sm">
                         <Card key={serie.id} image={serie.image} text={serie.name} />
                     </Link>
                 ))
@@ -38,7 +38,7 @@ const OnTheAirSeries = () => {
         <CardSeccion title="On The Air Series">
             {
                 series.map((serie) => (
-                    <Link key={serie.id} to={`/series/${serie.id}`} className="basis-sm">
+                    <Link key={serie.id} to={`/series/${serie.id}/${serie.name}`} className="basis-sm">
                         <Card key={serie.id} image={serie.image} text={serie.name} />
                     </Link>
                 ))

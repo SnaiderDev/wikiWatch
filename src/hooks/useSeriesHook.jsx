@@ -12,6 +12,7 @@ export function UseTopRatedSeries (){
                 .slice(0,6)
                 .map((tv)=>{
                     return {
+                        id: tv.id,
                         name: tv.name,
                         image: `https://image.tmdb.org/t/p/original${tv.poster_path}`
                     }
@@ -38,6 +39,7 @@ export function UsePopularSeries(){
                 .slice(0,6)
                 .map((tv)=>{
                     return {
+                        id: tv.id,
                         name: tv.name,
                         image: `https://image.tmdb.org/t/p/original${tv.poster_path}`
                     }
@@ -63,6 +65,7 @@ export function UseOnTheAirSeries(){
                 .slice(0,6)
                 .map((tv)=>{
                     return {
+                        id: tv.id,
                         name: tv.name,
                         image: `https://image.tmdb.org/t/p/original${tv.poster_path}`
                     }

@@ -3,6 +3,7 @@ import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPintures
 import { CardsHome, CardSeccion, Card } from "./cards";
 import {  Icon } from "./Items";
 import { FaCircleArrowUp } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 
@@ -61,8 +62,11 @@ const MoviesCardSection = () => {
             </header>
             <CardSeccion>
                 {
-                    ratedPintures.map((serie) =>(
-                     <Card key={serie.id} image={serie.image} text={serie.name} />
+                    ratedPintures.map((movie) =>(
+                    <Link key={movie.id} to={`/movies/${movie.id}/${movie.name}`} className="basis-sm">
+                        <Card key={movie.id} image={movie.image} text={movie.name} />
+                    </Link>
+                     
                     ))
                 }
             </CardSeccion>
@@ -86,7 +90,10 @@ const SeriesCardSection = () => {
             <CardSeccion>
                 {
                     ratedSeries.map((serie) =>(
-                     <Card key={serie.id} image={serie.image} text={serie.name} />
+                    <Link key={serie.id} to={`/series/${serie.id}/${serie.name}`} className="basis-sm">
+                        <Card key={serie.id} image={serie.image} text={serie.name} />
+                    </Link>
+                     
                     ))
                 }
             </CardSeccion>

@@ -62,6 +62,7 @@ export function UseRatedMoviesPinturesCardHome(){
                     .slice(0, 6) // Take only the first 6
                     .map((movie) => ({
                         id: movie.id,
+                        type: "movies",
                         image: `https://image.tmdb.org/t/p/original${movie.poster_path}`,
                         name: movie.title,
                     }));
@@ -90,6 +91,7 @@ export function UseRatedSeriesPinturesCardHome(){
                     .slice(0, 6) // Take only the first 6
                     .map((series) => ({
                         id: series.id,
+                        type:"series",
                         image: `https://image.tmdb.org/t/p/original${series.poster_path}`,
                         name: series.name,
                     }));

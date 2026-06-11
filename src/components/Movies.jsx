@@ -7,7 +7,7 @@ const TopRatedMovies = () => {
     return (
         <CardSeccion title="Top Rated Movies">
             {topRatedMovies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm" >
+                <Link key={movie.id} to={`/movies/${movie.id}/${movie.name}`} className="basis-sm" >
                     <Card key={movie.id} image={movie.image} text={movie.name} />
                 </Link>
             ))}
@@ -20,7 +20,7 @@ const PopularMovies = () => {
     return (
         <CardSeccion title="Popular Movies">
             {popularMovies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm">
+                <Link key={movie.id} to={`/movies/${movie.id}/${movie.name}`} className="basis-sm">
                     <Card key={movie.id} image={movie.image} text={movie.name} />
                 </Link>
             ))}
@@ -33,7 +33,7 @@ const UpcomingMovies = () => {
     return (
         <CardSeccion title="Upcoming Movies">
             {upcomingMovies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`} className="basis-sm">
+                <Link key={movie.id} to={`/movies/${movie.id}/${movie.name}`} className="basis-sm">
                     <Card key={movie.id} image={movie.image} text={movie.name} />
                 </Link>
             ))}
