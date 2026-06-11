@@ -205,7 +205,7 @@ export function InfoDetailsMovie({ id, type }) {
     {
       details.similar && details.similar.length > 0 ?  (
         <article>
-          <CardSeccion title="Upcoming Movies">
+          <CardSeccion title="Similar Content">
             {details.similar.map((similar) => (
                 <Link key={similar.id} to={`/movie/${similar.id}`} className="basis-sm">
                     <Card key={similar.id} image={similar.poster} text={similar.title} />
