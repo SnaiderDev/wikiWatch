@@ -7,11 +7,15 @@ import { Link } from "react-router-dom";
 import { Card } from "./cards";
 import { InfoUknown } from "./Info";
 
-
 export function InfoDetailsTV({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
-  if (!details) return <InfoUknown/>;
-  
+  const handleUpwindow = () => {
+    window.scrollTo(0, 0);
+  };
+
+  handleUpwindow();
+
+  if (!details) return <InfoUknown />;
 
   return (
     <main>
@@ -182,7 +186,7 @@ export function InfoDetailsTV({ id, type }) {
         <></>
       )}
 
-       {details.provider && details.provider.length > 0 ? (
+      {details.provider && details.provider.length > 0 ? (
         <article className="flex flex-col items-center gap-2">
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Watch Providers</h2>
@@ -208,19 +212,27 @@ export function InfoDetailsTV({ id, type }) {
       ) : (
         <></>
       )}
-    {
-      details.similar && details.similar.length > 0 ?  (
+      {details.similar && details.similar.length > 0 ? (
         <article>
           <CardSeccion title="Similar Content">
             {details.similar.map((similar) => (
-                <Link key={similar.id} to={`/series/${similar.id}`} className="basis-sm">
-                    <Card key={similar.id} image={similar.poster} text={similar.title} />
-                </Link>
+              <Link
+                key={similar.id}
+                to={`/series/${similar.id}`}
+                className="basis-sm"
+              >
+                <Card
+                  key={similar.id}
+                  image={similar.poster}
+                  text={similar.title}
+                />
+              </Link>
             ))}
-        </CardSeccion>
+          </CardSeccion>
         </article>
-      ): <></>
-    }
+      ) : (
+        <></>
+      )}
     </main>
   );
 }
