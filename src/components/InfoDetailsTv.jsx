@@ -11,6 +11,7 @@ export function InfoDetailsTV({ id, type }) {
   const details = UseGetDetailsMedia(id, type);
   const handleUpwindow = () => {
     window.scrollTo(0, 0);
+  
   };
 
   handleUpwindow();
