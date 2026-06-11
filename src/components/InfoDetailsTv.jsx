@@ -91,7 +91,7 @@ export function InfoDetailsTV({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Production Companies</h2>
           </header>
-          <div className="flex flex-wrap gap-4 p-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {details.production_companies.map((company) => (
               <div
                 key={company.name}
@@ -118,7 +118,7 @@ export function InfoDetailsTV({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold text-center">Seasons</h2>
           </header>
-          <div className="flex flex-wrap gap-4 p-4 justify-center">
+          <div className="flex flex-wrap  gap-4 p-4 justify-center">
             {details.seasons.map((season) => (
               <div key={season.name} className="flex flex-col gap-2 basis-3xs">
                 <img
@@ -187,7 +187,7 @@ export function InfoDetailsTV({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Watch Providers</h2>
           </header>
-          <div className="flex flex-wrap gap-4 p-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {details.provider.map((provider) => (
               <div
                 key={provider.name}

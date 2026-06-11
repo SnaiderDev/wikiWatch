@@ -85,7 +85,7 @@ export function InfoDetailsMovie({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Production Companies</h2>
           </header>
-          <div className="flex flex-wrap gap-4 p-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {details.production_companies.map((company) => (
               <div
                 key={company.name}
@@ -181,7 +181,7 @@ export function InfoDetailsMovie({ id, type }) {
           <header className="p-2 text-[var(--color-primary)]">
             <h2 className="text-xl font-bold">Watch Providers</h2>
           </header>
-          <div className="flex flex-wrap gap-4 p-4">
+          <div className="flex flex-wrap justify-center gap-4 p-4">
             {details.provider.map((provider) => (
               <div
                 key={provider.name}
