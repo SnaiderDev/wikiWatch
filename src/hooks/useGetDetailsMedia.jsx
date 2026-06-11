@@ -207,7 +207,7 @@ export function UseGetDetailsMedia(id, type) {
                 ).map((similar)=>({
                   id:similar.id,
                   type:"series",
-                  title: similar.original_name,
+                  title: similar.name,
                   poster: `https://image.tmdb.org/t/p/original${similar.poster_path}`,
                   
                 })).slice(0,6)
