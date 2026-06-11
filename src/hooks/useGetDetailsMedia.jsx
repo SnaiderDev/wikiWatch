@@ -12,10 +12,9 @@ export function UseGetDetailsMedia(id, type) {
             const getDetails = () => {
               const result = async () => {
                 const res = await DetailMovie(id);
-                console.log(res);
                 setDetails(res);
               };
-              result()
+              result();
             };
             getDetails();
           }
@@ -25,10 +24,9 @@ export function UseGetDetailsMedia(id, type) {
             const getDetails = () => {
               const result = async () => {
                 const res = await detailsSeries(id);
-                console.log(res);
                 setDetails(res);
               };
-              result()
+              result();
             };
             getDetails();
           }
