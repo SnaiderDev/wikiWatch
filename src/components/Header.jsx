@@ -23,7 +23,7 @@ const ButtonAside = ({ icon, accion }) => {
 const SearchItems = ({ content, handleClear }) => {
   const mediaSearch = UseMediaSearch(content);
   return (
-    <div className="absolute top-16 left-0 right-0 z-10 bg-neutral-900 rounded-md shadow-lg p-2">
+    <div className="absolute top-16 left-0 right-0 z-10 bg-neutral-900 rounded-md shadow-lg p-2 max-h-80 overflow-y-auto">
       {mediaSearch && mediaSearch.length > 0
         ? mediaSearch.map((media) => (
             <Link
@@ -79,10 +79,8 @@ const SearchBar = () => {
 const Aside = ({ children }) => {
   return (
     <aside className="absolute top-0 left-0 flex flex-col items-center justify-center gap-4 w-2/4 h-screen bg-neutral-900 p-4 z-50">
-      <div className="text-3xl">
-        <LabelItem icon={null}>
-          <div>WikiWatch</div>
-        </LabelItem>
+      <div className="text-3xl font-bold font-title">
+        Wiki<span className="text-[var(--color-primary)]">Watch</span>
       </div>
       <Link to="/">
         <LabelItem icon={<CiHome />}>Home</LabelItem>
