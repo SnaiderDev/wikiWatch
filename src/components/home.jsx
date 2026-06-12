@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { UseHomePintures, UseRatedMoviesPinturesCardHome, UseRatedSeriesPinturesCardHome } from "../hooks/useHomePintures";
 import { CardsHome, CardSeccion, Card } from "./cards";
-import {  Icon } from "./Items";
-import { FaCircleArrowUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { Loader } from "./Loader";
 
 
 
 //Actualizacion de las imagnes cada 5 segundos en el homre
-const HomePintures = () => {
-    const pintures = UseHomePintures();
+const HomePintures = ({ pintures }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     useEffect(() => {
+        if (!pintures.length) return;
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % pintures.length);
         }, 5000);
@@ -46,8 +45,7 @@ const HomePintures = () => {
     );
 };
 
-const MoviesCardSection = () => {
-    const ratedPintures = UseRatedMoviesPinturesCardHome();
+const MoviesCardSection = ({ ratedPintures }) => {
     return (
 
         <article>
@@ -61,21 +59,17 @@ const MoviesCardSection = () => {
 
             </header>
             <CardSeccion>
-                {
-                    ratedPintures.map((movie) =>(
+                {ratedPintures.map((movie) => (
                     <Link key={movie.id} to={`/movies/${movie.id}/${movie.name}`} className="basis-sm">
                         <Card key={movie.id} image={movie.image} text={movie.name} />
                     </Link>
-                     
-                    ))
-                }
+                ))}
             </CardSeccion>
         </article>
     )
 }
 
-const SeriesCardSection = () => {
-    const ratedSeries = UseRatedSeriesPinturesCardHome();
+const SeriesCardSection = ({ ratedSeries }) => {
     return (
         <article>
             <header>
@@ -88,14 +82,11 @@ const SeriesCardSection = () => {
 
             </header>
             <CardSeccion>
-                {
-                    ratedSeries.map((serie) =>(
+                {ratedSeries.map((serie) => (
                     <Link key={serie.id} to={`/series/${serie.id}/${serie.name}`} className="basis-sm">
                         <Card key={serie.id} image={serie.image} text={serie.name} />
                     </Link>
-                     
-                    ))
-                }
+                ))}
             </CardSeccion>
         </article>
 
@@ -103,12 +94,22 @@ const SeriesCardSection = () => {
 }
 
 export default function Home() {
+    const { pintures, loading: pinturesLoading } = UseHomePintures();
+    const { ratedPintures, loading: ratedMoviesLoading } = UseRatedMoviesPinturesCardHome();
+    const { ratedSeries, loading: ratedSeriesLoading } = UseRatedSeriesPinturesCardHome();
+
+    const isLoading = pinturesLoading || ratedMoviesLoading || ratedSeriesLoading;
+
+    if (isLoading) {
+        return <Loader />;
+    }
+
     return (
         <main>
-            <HomePintures />
+            <HomePintures pintures={pintures} />
             <CardsHome />
-            <MoviesCardSection />
-            <SeriesCardSection />
+            <MoviesCardSection ratedPintures={ratedPintures} />
+            <SeriesCardSection ratedSeries={ratedSeries} />
         </main>
     );
 }

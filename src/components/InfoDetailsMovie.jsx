@@ -6,6 +6,9 @@ import { CardSeccion } from "./cards";
 import { Link } from "react-router-dom";
 import { Card } from "./cards";
 import { InfoUknown } from "./Info";
+import { Loader } from "./Loader";
+
+
 
 export function InfoDetailsMovie({ id, type }) {
   const handleUpwindow = () => {
@@ -14,7 +17,8 @@ export function InfoDetailsMovie({ id, type }) {
 
   handleUpwindow();
 
-  const details = UseGetDetailsMedia(id, type);
+  const {details,loading} = UseGetDetailsMedia(id, type);
+  if (loading) return <Loader />; 
   if (!details) return <InfoUknown />;
   return (
     <main>

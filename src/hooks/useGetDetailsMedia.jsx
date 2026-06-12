@@ -4,40 +4,43 @@ import { detailsSeries } from "./useGetDetailsSerie";
 
 export function UseGetDetailsMedia(id, type) {
   const [details, setDetails] = useState({});
+  const [loading,setloading] = useState(true);
   useEffect(() => {
-    try {
-      switch (type) {
-        case "movies":
-          {
-            const getDetails = () => {
-              const result = async () => {
-                const res = await DetailMovie(id);
-                setDetails(res);
-              };
-              result();
-            };
-            getDetails();
-          }
-          break;
-        case "series":
-          {
-            const getDetails = () => {
-              const result = async () => {
-                const res = await detailsSeries(id);
-                setDetails(res);
-              };
-              result();
-            };
-            getDetails();
-          }
-          break;
-        default:
-          setDetails({});
-          break;
+    let mounted = true
+    const load = async()=>{
+      setloading(true)
+      try {
+        if (type ==="movies") {
+          let res = {}
+          res = await DetailMovie(id)
+          if(mounted){
+            setDetails(res)
+            setloading(false)
+          } 
+        } else if (type === "series"){
+          let res = {}
+          res = await detailsSeries(id)
+          if(mounted){
+            setDetails(res)
+            setloading(false)
+          } 
+        }
+        else {
+            console.log("This type is not valid")
+        }
+      } catch (error) {
+        console.log("The content is not avalible "+error)
       }
-    } catch (error) {
-      console.log(error);
     }
+    if(id) load()
+    else{
+      setDetails({})
+      setloading(false)
+    }
+    return () =>{
+      mounted = false
+    }
+
   }, [id, type]);
-  return details;
+  return {details,loading};
 }
