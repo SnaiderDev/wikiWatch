@@ -44,7 +44,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/series" element={<Series />} />
-            <Route path= ":type/:id/:name?" element={<Info />} />
+            <Route path="/:type/:id/:name?" element={<Info />} />
           </Routes>
           <Footer />
           <TopButton />
