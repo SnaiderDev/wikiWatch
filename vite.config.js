@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),tailwindcss()],
-  base: 'https://SnaiderDev.github.io/wikiWatch', 
+  plugins: [react(), tailwindcss()],
+  base: '/wikiWatch/',
 })
