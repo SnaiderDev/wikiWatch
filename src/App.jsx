@@ -5,7 +5,8 @@ import { Series } from "./components/Series";
 import { FaCircleArrowUp } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { Footer } from "./components/Footer";
-import { Routes, Route,BrowserRouter} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
+import { HashRouter as BrowserRouter } from "react-router-dom";
 import { Info } from "./components/Info";
 
 const TopButton = () => {
