@@ -6,16 +6,18 @@ import { CardSeccion } from "./cards";
 import { Link } from "react-router-dom";
 import { Card } from "./cards";
 import { InfoUknown } from "./Info";
+import {Loader} from "./Loader"
 
 export function InfoDetailsTV({ id, type }) {
-  const details = UseGetDetailsMedia(id, type);
+  const {details,loading} = UseGetDetailsMedia(id, type);
+  
   const handleUpwindow = () => {
     window.scrollTo(0, 0);
   
   };
 
   handleUpwindow();
-
+  if (loading) return <Loader />; 
   if (!details) return <InfoUknown />;
 
   return (

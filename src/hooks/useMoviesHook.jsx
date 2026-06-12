@@ -3,6 +3,7 @@ import { apikey } from "../config/apiKey";
 
 export function UseTopRatedMovies() {
     const [pintures, setPintures] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         const movies = async () => {
             try {
@@ -21,15 +22,18 @@ export function UseTopRatedMovies() {
             }
             catch (error) {
                 console.error("Error fetching movie data:", error);
+            } finally {
+                setLoading(false)
             }
         }
         movies();
     }, [])
-    return pintures
+    return { pintures, loading }
 }
 
 export function UsePopularMovies() {
     const [pintures, setPintures] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         const movies = async () => {
             try {
@@ -47,15 +51,18 @@ export function UsePopularMovies() {
                 setPintures(result)
             } catch (error) {
                 console.error("Error fetching movie data:", error);
+            } finally {
+                setLoading(false)
             }
         }
         movies();
     }, [])
-    return pintures
+    return { pintures, loading }
 }
 
 export function UseUpcomingMovies() {
     const [pintures, setPintures] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         const movies = async () => {
             try {
@@ -73,9 +80,11 @@ export function UseUpcomingMovies() {
                 setPintures(result)
             } catch (error) {
                 console.error("Error fetching movie data:", error);
+            } finally {
+                setLoading(false)
             }
         }
         movies();
     }, [])
-    return pintures
+    return { pintures, loading }
 }   

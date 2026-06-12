@@ -1,6 +1,15 @@
 import { UseCardPinturesHome } from "../hooks/useHomePintures";
 export function CardsHome() {
-    const cardPintures = UseCardPinturesHome()
+    const { cardPintures, loading } = UseCardPinturesHome();
+
+    if (loading) {
+        return (
+            <div className="mt-14 flex justify-center py-12">
+                <div className="w-12 h-12 border-4 border-t-transparent rounded-full animate-spin border-[var(--color-primary)]" />
+            </div>
+        );
+    }
+
     return (
         <div className="mt-14 flex flex-col  justify-center gap-4">
             <div>
